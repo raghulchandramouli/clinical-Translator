@@ -10,3 +10,10 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Generated research artifacts and model weights
+artifacts/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
