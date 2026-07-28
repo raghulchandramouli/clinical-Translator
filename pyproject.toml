@@ -1,0 +1,14 @@
+[project]
+name = "clinical-translator"
+version = "0.1.0"
+description = "Auditable clinical-text translation into formally verified facts"
+readme = "README.md"
+authors = [
+    { name = "raghul", email = "raghulchandramouli@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.11.23,<0.12.0"]
+build-backend = "uv_build"
