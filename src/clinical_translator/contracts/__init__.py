@@ -1,1 +1,1 @@
-"""Experiment scope contracts and schemas."""
+"""Experiment scope contracts."""

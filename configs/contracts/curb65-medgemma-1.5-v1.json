@@ -1,0 +1,191 @@
+{
+  "contract_id": "curb65-medgemma-1.5-v1",
+  "status": "frozen",
+  "task": {
+    "name": "curb65-fact-translation",
+    "description": "Translate controlled synthetic clinical vignettes into five Boolean CURB-65 facts. The model does not calculate the score.",
+    "input_modality": "text",
+    "output_format": "json"
+  },
+  "models": {
+    "primary": {
+      "repo_id": "google/medgemma-1.5-4b-it",
+      "revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+      "role": "medical instruction-tuned translator"
+    },
+    "control": {
+      "repo_id": "google/gemma-3-4b-it",
+      "revision": "093f9f388b31de276ce2de164bdc2081324b9767",
+      "role": "non-medical instruction-tuned control"
+    }
+  },
+  "input_domain": {
+    "grammar_version": "curb65-vignette-grammar-v1",
+    "patient_data": false,
+    "logical_combinations": 32,
+    "paraphrases_per_combination": {
+      "minimum": 8,
+      "maximum": 10
+    },
+    "record": {
+      "required_concepts": [
+        "mental_state",
+        "urea_mmol_l",
+        "respiratory_rate_per_minute",
+        "systolic_bp_mmhg",
+        "diastolic_bp_mmhg",
+        "age_years"
+      ],
+      "allowed_variation": [
+        "controlled paraphrase template",
+        "criterion values",
+        "one explicitly absent value for incomplete cases"
+      ],
+      "forbidden_content": [
+        "patient identifiers",
+        "diagnosis",
+        "treatment recommendation",
+        "facts outside the template grammar"
+      ]
+    },
+    "criteria": {
+      "confusion": {
+        "positive_when": "new mental confusion is explicitly present"
+      },
+      "elevated_urea": {
+        "positive_when": "urea_mmol_l > 7",
+        "boundary_values": [
+          6.9,
+          7.0,
+          7.1
+        ]
+      },
+      "high_respiratory_rate": {
+        "positive_when": "respiratory_rate_per_minute >= 30",
+        "boundary_values": [
+          29,
+          30,
+          31
+        ]
+      },
+      "low_blood_pressure": {
+        "positive_when": "systolic_bp_mmhg < 90 or diastolic_bp_mmhg <= 60",
+        "systolic_boundary_values": [
+          89,
+          90,
+          91
+        ],
+        "diastolic_boundary_values": [
+          59,
+          60,
+          61
+        ]
+      },
+      "age_at_least_65": {
+        "positive_when": "age_years >= 65",
+        "boundary_values": [
+          64,
+          65,
+          66
+        ]
+      }
+    },
+    "counterfactual_policy": "Matched pairs differ in exactly one criterion.",
+    "incomplete_case_policy": {
+      "domain": "robustness-only; excluded from the 32 complete Boolean combinations",
+      "construction": "Exactly one required concept is explicitly absent.",
+      "expected_result": "No accepted five-Boolean record; the case is unscorable and must not be guessed."
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "confusion",
+      "elevated_urea",
+      "high_respiratory_rate",
+      "low_blood_pressure",
+      "age_at_least_65"
+    ],
+    "properties": {
+      "confusion": {
+        "type": "boolean"
+      },
+      "elevated_urea": {
+        "type": "boolean"
+      },
+      "high_respiratory_rate": {
+        "type": "boolean"
+      },
+      "low_blood_pressure": {
+        "type": "boolean"
+      },
+      "age_at_least_65": {
+        "type": "boolean"
+      }
+    }
+  },
+  "reproducibility": {
+    "seeds": {
+      "python": 20260728,
+      "torch": 20260728,
+      "cuda": 20260728
+    },
+    "software": {
+      "python": "3.12.13",
+      "uv": "0.11.23",
+      "modal": "1.5.3",
+      "huggingface_hub": "1.25.1",
+      "transformers": "5.14.1",
+      "torch": "2.13.0"
+    },
+    "hardware": {
+      "provider": "modal",
+      "gpu": "A10G",
+      "gpu_count": 1,
+      "dtype": "bfloat16"
+    },
+    "generation": {
+      "batch_size": 1,
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "return_full_text": false
+    },
+    "determinism": {
+      "torch_deterministic_algorithms": true,
+      "cublas_workspace_config": ":4096:8"
+    }
+  },
+  "model_execution": {
+    "backend": "modal",
+    "environment": "dev",
+    "app": "clinical-translator-models",
+    "volume": "clinical-translator-models",
+    "volume_mount": "/models",
+    "huggingface_secret": "huggingface",
+    "huggingface_token_key": "HF_TOKEN",
+    "allow_local_weights": false
+  },
+  "claims": {
+    "evidence_status": "pending",
+    "supported_with_required_evidence": [
+      "correctness of the symbolic scorer given five Boolean facts",
+      "complete coverage of the declared finite generator",
+      "measured translation performance on the complete declared prompt set",
+      "causal evidence limited to tested interventions"
+    ],
+    "unsupported": [
+      "unrestricted natural-language equivalence",
+      "diagnosis or treatment safety",
+      "whole-model formal verification",
+      "clinical deployment readiness",
+      "coverage of patient data"
+    ]
+  },
+  "sources": {
+    "curb65": "https://www.nice.org.uk/guidance/ng138",
+    "primary_model": "https://huggingface.co/google/medgemma-1.5-4b-it",
+    "control_model": "https://huggingface.co/google/gemma-3-4b-it",
+    "modal_weights": "https://modal.com/docs/guide/model-weights"
+  }
+}

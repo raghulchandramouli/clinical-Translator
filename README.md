@@ -25,4 +25,22 @@ Generated datasets, activations, checkpoints, and reports belong in
 
 ```bash
 uv sync
+uv run python -m clinical_translator.contracts
 ```
+
+The printed content-addressed contract reference identifies the frozen
+experiment scope used by later artifacts.
+
+Model weights stay on Modal:
+
+```bash
+uv run --with modal==1.5.3 modal setup
+uv run --with modal==1.5.3 modal volume create clinical-translator-models
+uv run --with modal==1.5.3 modal secret create huggingface HF_TOKEN="$HF_TOKEN"
+uv run --with modal==1.5.3 modal run -m clinical_translator.models.modal_app
+```
+
+Accept the Google model terms on Hugging Face before caching the two pinned,
+gated checkpoints. The command above checks access without downloading weights;
+add `--download` to cache them in the Modal Volume. Never put the token or model
+weights in this repository.
