@@ -31,6 +31,12 @@ uv run python -m clinical_translator.contracts
 The printed content-addressed contract reference identifies the frozen
 experiment scope used by later artifacts.
 
+Generate the finite synthetic dataset:
+
+```bash
+uv run python -m clinical_translator.data
+```
+
 Model weights stay on Modal:
 
 ```bash
