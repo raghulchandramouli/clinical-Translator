@@ -37,6 +37,14 @@ Generate the finite synthetic dataset:
 uv run python -m clinical_translator.data
 ```
 
+Check the executable and formally verified scorers:
+
+```bash
+uv run python -m unittest tests/test_oracle.py -v
+$HOME/.elan/bin/lean -o /tmp/CURB65.olean proofs/ClinicalTranslator/CURB65.lean
+LEAN_PATH=/tmp $HOME/.elan/bin/leanchecker CURB65
+```
+
 Model weights stay on Modal:
 
 ```bash
