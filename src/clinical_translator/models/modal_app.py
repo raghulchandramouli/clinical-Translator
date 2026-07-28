@@ -19,6 +19,16 @@ image = (
 @app.function(
     image=image,
     secrets=[modal.Secret.from_name("huggingface", required_keys=["HF_TOKEN"])],
+)
+def check_access(repo_id: str, revision: str) -> str:
+    from huggingface_hub import HfApi
+
+    return HfApi().model_info(repo_id, revision=revision).sha
+
+
+@app.function(
+    image=image,
+    secrets=[modal.Secret.from_name("huggingface", required_keys=["HF_TOKEN"])],
     timeout=60 * 60,
     volumes={MODEL_DIR: volume},
 )
@@ -31,9 +41,16 @@ def cache_model(repo_id: str, revision: str) -> str:
 
 
 @app.local_entrypoint()
-def main(contract_path: str = "configs/contracts/curb65-medgemma-1.5-v1.json") -> None:
+def main(
+    contract_path: str = "configs/contracts/curb65-medgemma-1.5-v1.json",
+    download: bool = False,
+) -> None:
     from clinical_translator.contracts.validation import load
 
     contract = load(contract_path)
+    function = cache_model if download else check_access
     for model in contract["models"].values():
-        print(cache_model.remote(model["repo_id"], model["revision"]))
+        result = function.remote(model["repo_id"], model["revision"])
+        if not download and result != model["revision"]:
+            raise RuntimeError(f"revision mismatch for {model['repo_id']}")
+        print(result)

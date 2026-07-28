@@ -41,4 +41,6 @@ uv run --with modal==1.5.3 modal run -m clinical_translator.models.modal_app
 ```
 
 Accept the Google model terms on Hugging Face before caching the two pinned,
-gated checkpoints. Never put the token or model weights in this repository.
+gated checkpoints. The command above checks access without downloading weights;
+add `--download` to cache them in the Modal Volume. Never put the token or model
+weights in this repository.
