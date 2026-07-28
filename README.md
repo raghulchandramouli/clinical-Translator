@@ -58,3 +58,13 @@ Accept the Google model terms on Hugging Face before caching the two pinned,
 gated checkpoints. The command above checks access without downloading weights;
 add `--download` to cache them in the Modal Volume. Never put the token or model
 weights in this repository.
+
+Run the repeated MedGemma/control smoke check:
+
+```bash
+uv run --with modal==1.5.3 modal run --env dev -m clinical_translator.models.modal_app --smoke
+```
+
+It writes only validated five-Boolean outputs and reproducibility metadata to
+`evidence/goal-04-smoke.jsonl`; generated explanations are rejected and never
+stored.
