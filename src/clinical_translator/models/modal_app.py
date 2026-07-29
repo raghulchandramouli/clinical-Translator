@@ -163,11 +163,109 @@ def _smoke(contract: dict[str, Any], output: Path) -> None:
     print(f"{len(stored)} validated outputs written to {output}")
 
 
+def _evaluate(contract: dict[str, Any], output: Path) -> None:
+    import json
+
+    from clinical_translator.contracts.validation import reference
+    from clinical_translator.data.generator import generate, write_jsonl
+    from clinical_translator.evaluation.evaluator import evaluate, write_evidence
+    from clinical_translator.models.protocol import parse, prompt, prompt_reference
+
+    records, pairs = generate(contract)
+    output.mkdir(parents=True, exist_ok=True)
+    partial = output / "predictions.partial.jsonl"
+    final = output / "predictions.jsonl"
+    resume = partial if partial.exists() else final
+    predictions = (
+        [json.loads(line) for line in resume.read_text().splitlines()]
+        if resume.exists()
+        else []
+    )
+    records_by_id = {record["id"]: record for record in records}
+    for item in predictions:
+        model = contract["models"][item["model"]]
+        if (
+            item["contract_ref"] != reference(contract)
+            or item["repo_id"] != model["repo_id"]
+            or item["revision"] != model["revision"]
+        ):
+            raise ValueError("stored predictions use a different contract or checkpoint")
+        expected_prompt = prompt_reference(records_by_id[item["prompt_id"]])
+        if "prompt" in item and item["prompt"] != expected_prompt:
+            raise ValueError("stored predictions use a different prompt protocol")
+        item["prompt"] = expected_prompt
+    completed = {(item["model"], item["prompt_id"]) for item in predictions}
+    for role, model in contract["models"].items():
+        runner = Translator(
+            repo_id=model["repo_id"],
+            revision=model["revision"],
+        )
+        pending = [
+            record for record in records if (role, record["id"]) not in completed
+        ]
+        for start in range(0, len(pending), 16):
+            batch = pending[start : start + 16]
+            try:
+                raw = runner.translate.remote(
+                    [prompt(record["prompt"]) for record in batch],
+                    contract["reproducibility"]["generation"],
+                )
+                if len(raw) != len(batch):
+                    raise RuntimeError("runner returned the wrong number of outputs")
+            except Exception as error:
+                outcomes = [
+                    {
+                        "status": "runner_failure",
+                        "error": f"{type(error).__name__}: {error}",
+                    }
+                    for _ in batch
+                ]
+            else:
+                outcomes = []
+                for text in raw:
+                    try:
+                        outcomes.append(
+                            {"status": "validated", "prediction": parse(text)}
+                        )
+                    except (TypeError, ValueError) as error:
+                        outcomes.append(
+                            {"status": "parser_failure", "error": str(error)}
+                        )
+            for record, outcome in zip(batch, outcomes, strict=True):
+                predictions.append(
+                    {
+                        "contract_ref": reference(contract),
+                        "model": role,
+                        "repo_id": model["repo_id"],
+                        "revision": model["revision"],
+                        "prompt_id": record["id"],
+                        "prompt": prompt_reference(record),
+                        "kind": record["kind"],
+                        "provenance": record["provenance"],
+                        "expected": record["facts"],
+                        **outcome,
+                    }
+                )
+            write_jsonl(predictions, partial)
+            done = sum(item["model"] == role for item in predictions)
+            print(f"{role}: {done}/{len(records)}")
+    metrics, counterfactuals, failures = evaluate(
+        contract,
+        records,
+        pairs,
+        predictions,
+    )
+    write_evidence(output, metrics, predictions, counterfactuals, failures)
+    partial.unlink(missing_ok=True)
+    print(f"{len(predictions)} outcomes and {len(failures)} failures written to {output}")
+
+
 @app.local_entrypoint()
 def main(
     contract_path: str = "configs/contracts/curb65-medgemma-1.5-v1.json",
     download: bool = False,
     smoke: bool = False,
+    evaluate_all: bool = False,
     output: str = "evidence/goal-04-smoke.jsonl",
 ) -> None:
     from clinical_translator.contracts.validation import load
@@ -175,6 +273,13 @@ def main(
     contract = load(contract_path)
     if smoke:
         _smoke(contract, Path(output))
+        return
+    if evaluate_all:
+        destination = (
+            Path("evidence/goal-05") if output == "evidence/goal-04-smoke.jsonl"
+            else Path(output)
+        )
+        _evaluate(contract, destination)
         return
     function = cache_model if download else check_access
     for model in contract["models"].values():
