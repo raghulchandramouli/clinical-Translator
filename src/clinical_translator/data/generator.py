@@ -167,7 +167,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate the CURB-65 prompt set")
     parser.add_argument(
         "--contract",
-        default="configs/contracts/curb65-medgemma-1.5-v1.json",
+        default="configs/contracts/curb65-llama-v2.json",
     )
     parser.add_argument("--output", type=Path, default=Path("artifacts/vignettes"))
     args = parser.parse_args()

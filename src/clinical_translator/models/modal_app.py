@@ -69,16 +69,14 @@ class Translator:
     @modal.enter()
     def load(self) -> None:
         import torch
-        from transformers import AutoModelForImageTextToText, AutoTokenizer
+        from transformers import AutoModelForCausalLM, AutoTokenizer
 
         path = MODEL_DIR / self.repo_id
         if (path / REVISION_FILE).read_text(encoding="ascii") != self.revision:
             raise RuntimeError(f"cached revision mismatch for {self.repo_id}")
-        torch.manual_seed(20260728)
-        torch.cuda.manual_seed_all(20260728)
         torch.use_deterministic_algorithms(True)
         self.tokenizer = AutoTokenizer.from_pretrained(path, local_files_only=True)
-        self.model = AutoModelForImageTextToText.from_pretrained(
+        self.model = AutoModelForCausalLM.from_pretrained(
             path,
             dtype=torch.bfloat16,
             local_files_only=True,
@@ -90,9 +88,12 @@ class Translator:
         self,
         prompts: list[str],
         generation: dict[str, Any],
+        seeds: dict[str, int],
     ) -> list[str]:
         import torch
 
+        torch.manual_seed(seeds["torch"])
+        torch.cuda.manual_seed_all(seeds["cuda"])
         outputs = []
         for text in prompts:
             inputs = self.tokenizer.apply_chat_template(
@@ -143,6 +144,7 @@ def _smoke(contract: dict[str, Any], output: Path) -> None:
             runner.translate.remote(
                 prompts,
                 contract["reproducibility"]["generation"],
+                contract["reproducibility"]["seeds"],
             )
             for _ in range(2)
         ]
@@ -209,6 +211,7 @@ def _evaluate(contract: dict[str, Any], output: Path) -> None:
                 raw = runner.translate.remote(
                     [prompt(record["prompt"]) for record in batch],
                     contract["reproducibility"]["generation"],
+                    contract["reproducibility"]["seeds"],
                 )
                 if len(raw) != len(batch):
                     raise RuntimeError("runner returned the wrong number of outputs")
@@ -262,7 +265,7 @@ def _evaluate(contract: dict[str, Any], output: Path) -> None:
 
 @app.local_entrypoint()
 def main(
-    contract_path: str = "configs/contracts/curb65-medgemma-1.5-v1.json",
+    contract_path: str = "configs/contracts/curb65-llama-v2.json",
     download: bool = False,
     smoke: bool = False,
     evaluate_all: bool = False,

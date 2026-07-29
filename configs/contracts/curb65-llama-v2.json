@@ -1,5 +1,5 @@
 {
-  "contract_id": "curb65-medgemma-1.5-v1",
+  "contract_id": "curb65-llama-v2",
   "status": "frozen",
   "task": {
     "name": "curb65-fact-translation",
@@ -9,14 +9,14 @@
   },
   "models": {
     "primary": {
-      "repo_id": "google/medgemma-1.5-4b-it",
-      "revision": "91850547d9f0b2fdd21aa7c5f4f3d1a8a52c243b",
+      "repo_id": "m42-health/Llama3-Med42-8B",
+      "revision": "ceab7e7ee4b9dbde7ba82867f34274db51487d83",
       "role": "medical instruction-tuned translator"
     },
     "control": {
-      "repo_id": "google/gemma-3-4b-it",
-      "revision": "093f9f388b31de276ce2de164bdc2081324b9767",
-      "role": "non-medical instruction-tuned control"
+      "repo_id": "NousResearch/Meta-Llama-3-8B-Instruct",
+      "revision": "53346005fb0ef11d3b6a83b12c895cca40156b6c",
+      "role": "public Meta-Llama 3 instruction-tuned control"
     }
   },
   "input_domain": {
@@ -127,9 +127,9 @@
   },
   "reproducibility": {
     "seeds": {
-      "python": 20260728,
-      "torch": 20260728,
-      "cuda": 20260728
+      "python": 20260729,
+      "torch": 20260729,
+      "cuda": 20260729
     },
     "software": {
       "python": "3.12.13",
@@ -184,8 +184,8 @@
   },
   "sources": {
     "curb65": "https://www.nice.org.uk/guidance/ng138",
-    "primary_model": "https://huggingface.co/google/medgemma-1.5-4b-it",
-    "control_model": "https://huggingface.co/google/gemma-3-4b-it",
+    "primary_model": "https://huggingface.co/m42-health/Llama3-Med42-8B",
+    "control_model": "https://huggingface.co/NousResearch/Meta-Llama-3-8B-Instruct",
     "modal_weights": "https://modal.com/docs/guide/model-weights"
   }
 }

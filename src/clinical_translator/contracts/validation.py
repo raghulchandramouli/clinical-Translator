@@ -90,7 +90,7 @@ def main() -> None:
     parser.add_argument(
         "path",
         nargs="?",
-        default="configs/contracts/curb65-medgemma-1.5-v1.json",
+        default="configs/contracts/curb65-llama-v2.json",
     )
     contract = load(parser.parse_args().path)
     print(reference(contract))

@@ -16,7 +16,7 @@ from clinical_translator.contracts.validation import load
 from clinical_translator.data.generator import generate
 
 ROOT = Path(__file__).parents[1]
-CONTRACT = ROOT / "configs/contracts/curb65-medgemma-1.5-v1.json"
+CONTRACT = ROOT / "configs/contracts/curb65-llama-v2.json"
 PROOF = ROOT / "proofs/ClinicalTranslator/CURB65.lean"
 
 
