@@ -1,0 +1,3607 @@
+{
+  "by_boundary": {
+    "control": {
+      "age_at_least_65": {
+        "64": {
+          "accuracy": 0.3671875,
+          "accuracy_given_valid": 0.3671875,
+          "correct": 47,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "65": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "66": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        }
+      },
+      "confusion": {
+        "alert with no confusion": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 128,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "new confusion present": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 128,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        }
+      },
+      "elevated_urea": {
+        "6.9": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "7.0": {
+          "accuracy": 0.421875,
+          "accuracy_given_valid": 0.421875,
+          "correct": 27,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "7.1": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 128,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        }
+      },
+      "high_respiratory_rate": {
+        "29": {
+          "accuracy": 0.8984375,
+          "accuracy_given_valid": 0.8984375,
+          "correct": 115,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "30": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "31": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        }
+      },
+      "low_blood_pressure": {
+        "89/61": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 48,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        },
+        "90/59": {
+          "accuracy": 0.40625,
+          "accuracy_given_valid": 0.40625,
+          "correct": 13,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 32,
+          "runner_failures": 0,
+          "validated": 32
+        },
+        "90/61": {
+          "accuracy": 0.95,
+          "accuracy_given_valid": 0.95,
+          "correct": 76,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 80,
+          "runner_failures": 0,
+          "validated": 80
+        },
+        "91/60": {
+          "accuracy": 0.3541666666666667,
+          "accuracy_given_valid": 0.3541666666666667,
+          "correct": 17,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        },
+        "91/61": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 48,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        }
+      }
+    },
+    "primary": {
+      "age_at_least_65": {
+        "64": {
+          "accuracy": 0.46875,
+          "accuracy_given_valid": 0.46875,
+          "correct": 60,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "65": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "66": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        }
+      },
+      "confusion": {
+        "alert with no confusion": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 128,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "new confusion present": {
+          "accuracy": 0.671875,
+          "accuracy_given_valid": 0.671875,
+          "correct": 86,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        }
+      },
+      "elevated_urea": {
+        "6.9": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "7.0": {
+          "accuracy": 0.03125,
+          "accuracy_given_valid": 0.03125,
+          "correct": 2,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "7.1": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 128,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        }
+      },
+      "high_respiratory_rate": {
+        "29": {
+          "accuracy": 0.96875,
+          "accuracy_given_valid": 0.96875,
+          "correct": 124,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 128,
+          "runner_failures": 0,
+          "validated": 128
+        },
+        "30": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        },
+        "31": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 64,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 64,
+          "runner_failures": 0,
+          "validated": 64
+        }
+      },
+      "low_blood_pressure": {
+        "89/61": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 48,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        },
+        "90/59": {
+          "accuracy": 0.6875,
+          "accuracy_given_valid": 0.6875,
+          "correct": 22,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 32,
+          "runner_failures": 0,
+          "validated": 32
+        },
+        "90/61": {
+          "accuracy": 0.9,
+          "accuracy_given_valid": 0.9,
+          "correct": 72,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 80,
+          "runner_failures": 0,
+          "validated": 80
+        },
+        "91/60": {
+          "accuracy": 0.3125,
+          "accuracy_given_valid": 0.3125,
+          "correct": 15,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        },
+        "91/61": {
+          "accuracy": 0.9375,
+          "accuracy_given_valid": 0.9375,
+          "correct": 45,
+          "format_failures": 0,
+          "parser_failures": 0,
+          "records": 48,
+          "runner_failures": 0,
+          "validated": 48
+        }
+      }
+    }
+  },
+  "by_combination": {
+    "control": {
+      "00000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.875,
+          "accuracy_given_valid": 0.875,
+          "correct": 7
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 8
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.875,
+          "accuracy_given_valid": 0.875,
+          "correct": 7
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 8
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      }
+    },
+    "primary": {
+      "00000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "00111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.875,
+          "accuracy_given_valid": 0.875,
+          "correct": 7
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 8
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "01111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "confusion": {
+            "accuracy": 0.0,
+            "accuracy_given_valid": 0.0,
+            "correct": 0
+          },
+          "elevated_urea": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.375,
+            "accuracy_given_valid": 0.375,
+            "correct": 3
+          },
+          "confusion": {
+            "accuracy": 0.0,
+            "accuracy_given_valid": 0.0,
+            "correct": 0
+          },
+          "elevated_urea": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.125,
+          "accuracy_given_valid": 0.125,
+          "correct": 1
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "confusion": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.0,
+          "accuracy_given_valid": 0.0,
+          "correct": 0
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "10111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11000": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "confusion": {
+            "accuracy": 0.25,
+            "accuracy_given_valid": 0.25,
+            "correct": 2
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 2
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11001": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.625,
+          "accuracy_given_valid": 0.625,
+          "correct": 5
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11010": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 7
+          },
+          "confusion": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 4
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.625,
+            "accuracy_given_valid": 0.625,
+            "correct": 5
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 3
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11011": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5,
+          "accuracy_given_valid": 0.5,
+          "correct": 4
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11100": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.625,
+          "accuracy_given_valid": 0.625,
+          "correct": 5
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11101": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11110": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      },
+      "11111": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 8
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 6
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.75,
+          "accuracy_given_valid": 0.75,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 8,
+        "runner_failures": 0,
+        "validated": 8
+      }
+    }
+  },
+  "by_template": {
+    "control": {
+      "t01": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.71875,
+            "accuracy_given_valid": 0.71875,
+            "correct": 23
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.71875,
+          "accuracy_given_valid": 0.71875,
+          "correct": 23
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t02": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.40625,
+          "accuracy_given_valid": 0.40625,
+          "correct": 13
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t03": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.90625,
+            "accuracy_given_valid": 0.90625,
+            "correct": 29
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.59375,
+            "accuracy_given_valid": 0.59375,
+            "correct": 19
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.25,
+          "accuracy_given_valid": 0.25,
+          "correct": 8
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t04": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.65625,
+            "accuracy_given_valid": 0.65625,
+            "correct": 21
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 0.78125,
+            "accuracy_given_valid": 0.78125,
+            "correct": 25
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.46875,
+          "accuracy_given_valid": 0.46875,
+          "correct": 15
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t05": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.53125,
+          "accuracy_given_valid": 0.53125,
+          "correct": 17
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t06": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 0.5625,
+            "accuracy_given_valid": 0.5625,
+            "correct": 18
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.8125,
+            "accuracy_given_valid": 0.8125,
+            "correct": 26
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.1875,
+          "accuracy_given_valid": 0.1875,
+          "correct": 6
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t07": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.6875,
+            "accuracy_given_valid": 0.6875,
+            "correct": 22
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 28
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.3125,
+          "accuracy_given_valid": 0.3125,
+          "correct": 10
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t08": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 16
+          },
+          "confusion": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "elevated_urea": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.96875,
+            "accuracy_given_valid": 0.96875,
+            "correct": 31
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 12
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      }
+    },
+    "primary": {
+      "t01": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.65625,
+            "accuracy_given_valid": 0.65625,
+            "correct": 21
+          },
+          "confusion": {
+            "accuracy": 0.78125,
+            "accuracy_given_valid": 0.78125,
+            "correct": 25
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.5625,
+          "accuracy_given_valid": 0.5625,
+          "correct": 18
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t02": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "confusion": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 28
+          },
+          "elevated_urea": {
+            "accuracy": 0.5625,
+            "accuracy_given_valid": 0.5625,
+            "correct": 18
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 16
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.21875,
+          "accuracy_given_valid": 0.21875,
+          "correct": 7
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t03": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.5625,
+            "accuracy_given_valid": 0.5625,
+            "correct": 18
+          },
+          "confusion": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.9375,
+            "accuracy_given_valid": 0.9375,
+            "correct": 30
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.6875,
+            "accuracy_given_valid": 0.6875,
+            "correct": 22
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.34375,
+          "accuracy_given_valid": 0.34375,
+          "correct": 11
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t04": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.6875,
+            "accuracy_given_valid": 0.6875,
+            "correct": 22
+          },
+          "confusion": {
+            "accuracy": 0.84375,
+            "accuracy_given_valid": 0.84375,
+            "correct": 27
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 16
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.28125,
+          "accuracy_given_valid": 0.28125,
+          "correct": 9
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t05": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          },
+          "confusion": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 28
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.53125,
+            "accuracy_given_valid": 0.53125,
+            "correct": 17
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.34375,
+          "accuracy_given_valid": 0.34375,
+          "correct": 11
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t06": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.9375,
+            "accuracy_given_valid": 0.9375,
+            "correct": 30
+          },
+          "confusion": {
+            "accuracy": 0.875,
+            "accuracy_given_valid": 0.875,
+            "correct": 28
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 16
+          },
+          "high_respiratory_rate": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "low_blood_pressure": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.40625,
+          "accuracy_given_valid": 0.40625,
+          "correct": 13
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t07": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.6875,
+            "accuracy_given_valid": 0.6875,
+            "correct": 22
+          },
+          "confusion": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          },
+          "elevated_urea": {
+            "accuracy": 1.0,
+            "accuracy_given_valid": 1.0,
+            "correct": 32
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.96875,
+            "accuracy_given_valid": 0.96875,
+            "correct": 31
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.75,
+            "accuracy_given_valid": 0.75,
+            "correct": 24
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.375,
+          "accuracy_given_valid": 0.375,
+          "correct": 12
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      },
+      "t08": {
+        "criteria": {
+          "age_at_least_65": {
+            "accuracy": 0.59375,
+            "accuracy_given_valid": 0.59375,
+            "correct": 19
+          },
+          "confusion": {
+            "accuracy": 0.9375,
+            "accuracy_given_valid": 0.9375,
+            "correct": 30
+          },
+          "elevated_urea": {
+            "accuracy": 0.5,
+            "accuracy_given_valid": 0.5,
+            "correct": 16
+          },
+          "high_respiratory_rate": {
+            "accuracy": 0.96875,
+            "accuracy_given_valid": 0.96875,
+            "correct": 31
+          },
+          "low_blood_pressure": {
+            "accuracy": 0.84375,
+            "accuracy_given_valid": 0.84375,
+            "correct": 27
+          }
+        },
+        "exact_record": {
+          "accuracy": 0.28125,
+          "accuracy_given_valid": 0.28125,
+          "correct": 9
+        },
+        "format_failures": 0,
+        "parser_failures": 0,
+        "records": 32,
+        "runner_failures": 0,
+        "validated": 32
+      }
+    }
+  },
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "counterfactuals": {
+    "control": {
+      "available": 640,
+      "consistency": 0.5609375,
+      "consistency_given_available": 0.5609375,
+      "invariance_given_available": 0.825,
+      "only_intended_fact_changed": 359,
+      "other_facts_invariant": 528,
+      "pairs": 640,
+      "target_fact_changed": 455,
+      "target_sensitivity_given_available": 0.7109375,
+      "unavailable": 0
+    },
+    "primary": {
+      "available": 640,
+      "consistency": 0.453125,
+      "consistency_given_available": 0.453125,
+      "invariance_given_available": 0.753125,
+      "only_intended_fact_changed": 290,
+      "other_facts_invariant": 482,
+      "pairs": 640,
+      "target_fact_changed": 410,
+      "target_sensitivity_given_available": 0.640625,
+      "unavailable": 0
+    }
+  },
+  "models": {
+    "control": {
+      "criteria": {
+        "age_at_least_65": {
+          "accuracy": 0.68359375,
+          "accuracy_given_valid": 0.68359375,
+          "correct": 175
+        },
+        "confusion": {
+          "accuracy": 1.0,
+          "accuracy_given_valid": 1.0,
+          "correct": 256
+        },
+        "elevated_urea": {
+          "accuracy": 0.85546875,
+          "accuracy_given_valid": 0.85546875,
+          "correct": 219
+        },
+        "high_respiratory_rate": {
+          "accuracy": 0.94921875,
+          "accuracy_given_valid": 0.94921875,
+          "correct": 243
+        },
+        "low_blood_pressure": {
+          "accuracy": 0.7890625,
+          "accuracy_given_valid": 0.7890625,
+          "correct": 202
+        }
+      },
+      "exact_record": {
+        "accuracy": 0.40625,
+        "accuracy_given_valid": 0.40625,
+        "correct": 104
+      },
+      "format_failures": 0,
+      "incomplete": {
+        "accepted_guesses": 6,
+        "parser_failures": 0,
+        "records": 6,
+        "runner_failures": 0
+      },
+      "parser_failures": 0,
+      "records": 256,
+      "runner_failures": 0,
+      "validated": 256
+    },
+    "primary": {
+      "criteria": {
+        "age_at_least_65": {
+          "accuracy": 0.734375,
+          "accuracy_given_valid": 0.734375,
+          "correct": 188
+        },
+        "confusion": {
+          "accuracy": 0.8359375,
+          "accuracy_given_valid": 0.8359375,
+          "correct": 214
+        },
+        "elevated_urea": {
+          "accuracy": 0.7578125,
+          "accuracy_given_valid": 0.7578125,
+          "correct": 194
+        },
+        "high_respiratory_rate": {
+          "accuracy": 0.984375,
+          "accuracy_given_valid": 0.984375,
+          "correct": 252
+        },
+        "low_blood_pressure": {
+          "accuracy": 0.7890625,
+          "accuracy_given_valid": 0.7890625,
+          "correct": 202
+        }
+      },
+      "exact_record": {
+        "accuracy": 0.3515625,
+        "accuracy_given_valid": 0.3515625,
+        "correct": 90
+      },
+      "format_failures": 0,
+      "incomplete": {
+        "accepted_guesses": 5,
+        "parser_failures": 1,
+        "records": 6,
+        "runner_failures": 0
+      },
+      "parser_failures": 0,
+      "records": 256,
+      "runner_failures": 0,
+      "validated": 256
+    }
+  },
+  "scope": {
+    "complete_prompts": 256,
+    "counterfactual_pairs_per_model": 640,
+    "generated_prompts": 262,
+    "incomplete_prompts": 6,
+    "model_prompt_outcomes": 524,
+    "models": 2
+  }
+}

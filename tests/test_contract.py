@@ -6,8 +6,8 @@ from pathlib import Path
 
 from clinical_translator.contracts.validation import FACTS, load, reference, validate
 
-CONTRACT = Path(__file__).parents[1] / "configs/contracts/curb65-medgemma-1.5-v1.json"
-REFERENCE = "curb65-medgemma-1.5-v1@sha256:1b6f0ca2d0d79276dfdfb3846c3d024a961b446c939c43a5eb00cbb79307f246"
+CONTRACT = Path(__file__).parents[1] / "configs/contracts/curb65-llama-v2.json"
+REFERENCE = "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de"
 
 
 class ContractTest(unittest.TestCase):

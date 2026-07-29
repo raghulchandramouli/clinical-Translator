@@ -54,6 +54,14 @@ def parse(raw: str) -> dict[str, bool]:
     return {name: facts[name] for name in FACTS}
 
 
+def prompt_reference(source: dict[str, Any]) -> dict[str, str]:
+    return {
+        "id": source["id"],
+        "sha256": hashlib.sha256(source["prompt"].encode()).hexdigest(),
+        "protocol": PROMPT_VERSION,
+    }
+
+
 def result(
     *,
     contract: dict[str, Any],
@@ -64,11 +72,7 @@ def result(
     model = contract["models"][role]
     return {
         "contract_ref": reference(contract),
-        "prompt": {
-            "id": source["id"],
-            "sha256": hashlib.sha256(source["prompt"].encode()).hexdigest(),
-            "protocol": PROMPT_VERSION,
-        },
+        "prompt": prompt_reference(source),
         "model": {
             "role": role,
             "repo_id": model["repo_id"],
