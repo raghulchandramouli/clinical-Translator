@@ -611,6 +611,16 @@ class Translator:
             "intervention_attempts": attempts,
         }
 
+    @modal.method()
+    def extract_circuits(
+        self,
+        records: list[dict[str, Any]],
+        feature_layers: dict[str, int],
+    ) -> dict[str, Any]:
+        from clinical_translator.interpretability.circuits import extract
+
+        return extract(self.model, self.tokenizer, records, feature_layers)
+
 
 def _smoke(contract: dict[str, Any], output: Path) -> None:
     from clinical_translator.data.generator import generate, write_jsonl
@@ -897,6 +907,135 @@ def _discover_features(
     print(f"{len(report['ranked_candidates'])} candidates written to {output}")
 
 
+def _extract_circuits(
+    contract: dict[str, Any],
+    predictions_path: Path,
+    features_path: Path,
+    output: Path,
+) -> None:
+    import json
+
+    from clinical_translator.contracts.validation import FACTS, reference
+    from clinical_translator.data.generator import generate
+    from clinical_translator.interpretability.circuits import (
+        HELD_OUT_TEMPLATES,
+        KEEP_TOLERANCE,
+        TRAIN_TEMPLATE,
+        circuit_records,
+        validate_report,
+    )
+    from clinical_translator.models.protocol import prompt
+
+    generated, _pairs = generate(contract)
+    records = circuit_records(generated)
+    predictions = [
+        json.loads(line) for line in predictions_path.read_text().splitlines()
+    ]
+    feature_report = json.loads(features_path.read_text())
+    feature_layers = dict.fromkeys(
+        FACTS,
+        feature_report["dictionary"]["artifact"]["layer"],
+    )
+    results = {}
+    for role, model in contract["models"].items():
+        by_id = {
+            item["prompt_id"]: item["prediction"]
+            for item in predictions
+            if item["model"] == role
+            and item["kind"] == "complete"
+            and item["status"] == "validated"
+        }
+        if not all(record["id"] in by_id for record in records):
+            raise ValueError(f"Goal 05 predictions are incomplete for {role}")
+        runner = Translator(repo_id=model["repo_id"], revision=model["revision"])
+        results[role] = runner.extract_circuits.remote(
+            [
+                {
+                    "id": record["id"],
+                    "prompt": prompt(record["prompt"]),
+                    "template_id": record["provenance"]["template_id"],
+                    "expected": record["facts"],
+                    "baseline": by_id[record["id"]],
+                }
+                for record in records
+            ],
+            feature_layers,
+        )
+
+    comparison = {}
+    for fact in FACTS:
+        primary = results["primary"]["circuits"][fact]
+        control = results["control"]["circuits"][fact]
+        primary_nodes = {
+            node["id"]
+            for node in primary["graph"]["nodes"]
+            if node["type"] in {"attention_head", "mlp"}
+        }
+        control_nodes = {
+            node["id"]
+            for node in control["graph"]["nodes"]
+            if node["type"] in {"attention_head", "mlp"}
+        }
+        comparison[fact] = {
+            "primary_retained_components": len(primary_nodes),
+            "control_retained_components": len(control_nodes),
+            "shared_components": len(primary_nodes & control_nodes),
+            "component_jaccard": (
+                len(primary_nodes & control_nodes)
+                / len(primary_nodes | control_nodes)
+            ),
+            "primary_keep_agreement": primary["keep_only"][
+                "agreement_with_full_model"
+            ],
+            "control_keep_agreement": control["keep_only"][
+                "agreement_with_full_model"
+            ],
+            "primary_remove_margin_drop": primary["remove_only"][
+                "full_choice_margin_drop"
+            ],
+            "control_remove_margin_drop": control["remove_only"][
+                "full_choice_margin_drop"
+            ],
+        }
+
+    report = {
+        "schema_version": 1,
+        "contract_ref": reference(contract),
+        "models_pinned": {
+            role: {"role": role, **model}
+            for role, model in contract["models"].items()
+        },
+        "scope": {
+            "train_templates": [TRAIN_TEMPLATE],
+            "held_out_templates": list(HELD_OUT_TEMPLATES),
+            "selection_prompts": 32,
+            "held_out_prompts": 64,
+            "logical_combinations": 32,
+            "numeric_boundaries_covered": True,
+            "numeric_boundaries": {
+                "urea_mmol_l": ["6.9/7.0", "7.1"],
+                "respiratory_rate_per_minute": ["29", "30/31"],
+                "blood_pressure_mmhg": ["90/61", "89/61 or 91/60"],
+                "age_years": ["64", "65/66"],
+            },
+            "keep_only_tolerance": KEEP_TOLERANCE,
+            "claim_boundary": (
+                "candidate last-token circuits; no global minimality or "
+                "whole-model causal-completeness claim"
+            ),
+        },
+        "models": results,
+        "comparison": comparison,
+    }
+    validate_report(report)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(f"10 held-out circuits written to {output}")
+
+
 @app.local_entrypoint()
 def main(
     contract_path: str = "configs/contracts/curb65-llama-v2.json",
@@ -904,10 +1043,12 @@ def main(
     smoke: bool = False,
     capture: bool = False,
     discover_features: bool = False,
+    extract_circuits: bool = False,
     evaluate_all: bool = False,
     output: str = "evidence/goal-04-smoke.jsonl",
     capture_output: str = "evidence/goal-06/manifest.json",
     feature_output: str = "evidence/goal-07/report.json",
+    circuit_output: str = "evidence/goal-08/report.json",
     predictions: str = "evidence/goal-05/predictions.jsonl",
 ) -> None:
     from clinical_translator.contracts.validation import load
@@ -921,6 +1062,14 @@ def main(
         return
     if discover_features:
         _discover_features(contract, Path(predictions), Path(feature_output))
+        return
+    if extract_circuits:
+        _extract_circuits(
+            contract,
+            Path(predictions),
+            Path(feature_output),
+            Path(circuit_output),
+        )
         return
     if evaluate_all:
         destination = (

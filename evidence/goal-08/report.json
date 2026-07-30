@@ -1,0 +1,1291 @@
+{
+  "comparison": {
+    "age_at_least_65": {
+      "component_jaccard": 0.3333333333333333,
+      "control_keep_agreement": 0.96875,
+      "control_remove_margin_drop": -1.25,
+      "control_retained_components": 2,
+      "primary_keep_agreement": 0.953125,
+      "primary_remove_margin_drop": 0.1044921875,
+      "primary_retained_components": 2,
+      "shared_components": 1
+    },
+    "confusion": {
+      "component_jaccard": 1.0,
+      "control_keep_agreement": 1.0,
+      "control_remove_margin_drop": 0.966796875,
+      "control_retained_components": 2,
+      "primary_keep_agreement": 1.0,
+      "primary_remove_margin_drop": 1.8173828125,
+      "primary_retained_components": 2,
+      "shared_components": 2
+    },
+    "elevated_urea": {
+      "component_jaccard": 0.5,
+      "control_keep_agreement": 1.0,
+      "control_remove_margin_drop": 0.4765625,
+      "control_retained_components": 2,
+      "primary_keep_agreement": 1.0,
+      "primary_remove_margin_drop": 0.109375,
+      "primary_retained_components": 4,
+      "shared_components": 2
+    },
+    "high_respiratory_rate": {
+      "component_jaccard": 1.0,
+      "control_keep_agreement": 1.0,
+      "control_remove_margin_drop": 1.56201171875,
+      "control_retained_components": 2,
+      "primary_keep_agreement": 1.0,
+      "primary_remove_margin_drop": 1.4267578125,
+      "primary_retained_components": 2,
+      "shared_components": 2
+    },
+    "low_blood_pressure": {
+      "component_jaccard": 1.0,
+      "control_keep_agreement": 0.96875,
+      "control_remove_margin_drop": -0.1396484375,
+      "control_retained_components": 2,
+      "primary_keep_agreement": 0.953125,
+      "primary_remove_margin_drop": -0.2275390625,
+      "primary_retained_components": 2,
+      "shared_components": 2
+    }
+  },
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "models": {
+    "control": {
+      "circuits": {
+        "age_at_least_65": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.609375,
+            "full_choice_margin": 4.9560546875,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:age_at_least_65:layer:31",
+                "target": "fact_logit:age_at_least_65"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:14",
+                "target": "feature:age_at_least_65:layer:31",
+                "weight": 0.153564453125
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:age_at_least_65:layer:31",
+                "weight": -0.5286865234375
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:age_at_least_65:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.153564453125,
+                "head": 14,
+                "id": "head:31:14",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": -0.5286865234375,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:age_at_least_65",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 0.96875,
+            "expected_accuracy": 0.578125,
+            "full_choice_margin": 4.3515625,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 0.96875,
+                "expected_accuracy": 0.578125,
+                "full_choice_margin": 4.3515625,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.890625,
+                "degradation_pass": true,
+                "expected_accuracy": 0.5,
+                "expected_accuracy_drop": 0.109375,
+                "full_choice_margin": 6.2060546875,
+                "full_choice_margin_drop": -1.25,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.890625,
+            "degradation_pass": true,
+            "expected_accuracy": 0.5,
+            "expected_accuracy_drop": 0.109375,
+            "full_choice_margin": 6.2060546875,
+            "full_choice_margin_drop": -1.25,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "confusion": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 1.0,
+            "full_choice_margin": 5.564453125,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:confusion:layer:31",
+                "target": "fact_logit:confusion"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:confusion:layer:31",
+                "weight": 0.14682388305664062
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:confusion:layer:31",
+                "weight": -0.0390625
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:confusion:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.14682388305664062,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": -0.0390625,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:confusion",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 1.0,
+            "full_choice_margin": 3.693359375,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 1.0,
+                "full_choice_margin": 3.693359375,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 1.0,
+                "degradation_pass": true,
+                "expected_accuracy": 1.0,
+                "expected_accuracy_drop": 0.0,
+                "full_choice_margin": 4.59765625,
+                "full_choice_margin_drop": 0.966796875,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 1.0,
+            "degradation_pass": true,
+            "expected_accuracy": 1.0,
+            "expected_accuracy_drop": 0.0,
+            "full_choice_margin": 4.59765625,
+            "full_choice_margin_drop": 0.966796875,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "elevated_urea": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.90625,
+            "full_choice_margin": 7.8359375,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:elevated_urea:layer:31",
+                "target": "fact_logit:elevated_urea"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:14",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": 0.136871337890625
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": -0.61376953125
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:elevated_urea:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.136871337890625,
+                "head": 14,
+                "id": "head:31:14",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": -0.61376953125,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:elevated_urea",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.90625,
+            "full_choice_margin": 6.609375,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.90625,
+                "full_choice_margin": 6.609375,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.9375,
+                "degradation_pass": true,
+                "expected_accuracy": 0.84375,
+                "expected_accuracy_drop": 0.0625,
+                "full_choice_margin": 7.359375,
+                "full_choice_margin_drop": 0.4765625,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.9375,
+            "degradation_pass": true,
+            "expected_accuracy": 0.84375,
+            "expected_accuracy_drop": 0.0625,
+            "full_choice_margin": 7.359375,
+            "full_choice_margin_drop": 0.4765625,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "high_respiratory_rate": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.84375,
+            "full_choice_margin": 7.205078125,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:high_respiratory_rate:layer:31",
+                "target": "fact_logit:high_respiratory_rate"
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:high_respiratory_rate:layer:31",
+                "weight": 0.1549072265625
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:high_respiratory_rate:layer:31",
+                "weight": 0.11530303955078125
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:high_respiratory_rate:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.1549072265625,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "direct_attribution": 0.11530303955078125,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "id": "fact_logit:high_respiratory_rate",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.84375,
+            "full_choice_margin": 5.09228515625,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.84375,
+                "full_choice_margin": 5.09228515625,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.984375,
+                "degradation_pass": true,
+                "expected_accuracy": 0.828125,
+                "expected_accuracy_drop": 0.015625,
+                "full_choice_margin": 5.64306640625,
+                "full_choice_margin_drop": 1.56201171875,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.984375,
+            "degradation_pass": true,
+            "expected_accuracy": 0.828125,
+            "expected_accuracy_drop": 0.015625,
+            "full_choice_margin": 5.64306640625,
+            "full_choice_margin_drop": 1.56201171875,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "low_blood_pressure": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.90625,
+            "full_choice_margin": 3.23828125,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:low_blood_pressure:layer:31",
+                "target": "fact_logit:low_blood_pressure"
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:low_blood_pressure:layer:31",
+                "weight": 0.30108642578125
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:low_blood_pressure:layer:31",
+                "weight": 0.07021284103393555
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:low_blood_pressure:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.30108642578125,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "direct_attribution": 0.07021284103393555,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "id": "fact_logit:low_blood_pressure",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 0.96875,
+            "expected_accuracy": 0.875,
+            "full_choice_margin": 2.4326171875,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 0.96875,
+                "expected_accuracy": 0.875,
+                "full_choice_margin": 2.4326171875,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.875,
+                "degradation_pass": true,
+                "expected_accuracy": 0.84375,
+                "expected_accuracy_drop": 0.0625,
+                "full_choice_margin": 3.3779296875,
+                "full_choice_margin_drop": -0.1396484375,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.875,
+            "degradation_pass": true,
+            "expected_accuracy": 0.84375,
+            "expected_accuracy_drop": 0.0625,
+            "full_choice_margin": 3.3779296875,
+            "full_choice_margin_drop": -0.1396484375,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        }
+      },
+      "scope": {
+        "attention_heads_per_layer": 32,
+        "candidate_components_per_fact": 33,
+        "candidate_layers": [
+          31
+        ],
+        "context_policy": "layers 0-30 are the frozen context encoder; keep/remove interventions cover the feature-to-logit stage",
+        "feature_boundary_layer": 31,
+        "held_out_prompts": 64,
+        "intervention_position": "final structured fact decision token",
+        "selection_prompts": 32
+      }
+    },
+    "primary": {
+      "circuits": {
+        "age_at_least_65": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.71875,
+            "full_choice_margin": 5.22265625,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:age_at_least_65:layer:31",
+                "target": "fact_logit:age_at_least_65"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:age_at_least_65:layer:31",
+                "weight": 0.08835411071777344
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:age_at_least_65:layer:31",
+                "weight": 0.0506591796875
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:age_at_least_65:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.08835411071777344,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": 0.0506591796875,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:age_at_least_65",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 0.953125,
+            "expected_accuracy": 0.765625,
+            "full_choice_margin": 3.58984375,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 0.953125,
+                "expected_accuracy": 0.765625,
+                "full_choice_margin": 3.58984375,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.8125,
+                "degradation_pass": true,
+                "expected_accuracy": 0.53125,
+                "expected_accuracy_drop": 0.1875,
+                "full_choice_margin": 5.1181640625,
+                "full_choice_margin_drop": 0.1044921875,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.8125,
+            "degradation_pass": true,
+            "expected_accuracy": 0.53125,
+            "expected_accuracy_drop": 0.1875,
+            "full_choice_margin": 5.1181640625,
+            "full_choice_margin_drop": 0.1044921875,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "confusion": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.796875,
+            "full_choice_margin": 7.0478515625,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:confusion:layer:31",
+                "target": "fact_logit:confusion"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:confusion:layer:31",
+                "weight": 0.1749420166015625
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:confusion:layer:31",
+                "weight": 0.1231689453125
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:confusion:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.1749420166015625,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": 0.1231689453125,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:confusion",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.796875,
+            "full_choice_margin": 4.6513671875,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.796875,
+                "full_choice_margin": 4.6513671875,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.953125,
+                "degradation_pass": true,
+                "expected_accuracy": 0.84375,
+                "expected_accuracy_drop": -0.046875,
+                "full_choice_margin": 5.23046875,
+                "full_choice_margin_drop": 1.8173828125,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.953125,
+            "degradation_pass": true,
+            "expected_accuracy": 0.84375,
+            "expected_accuracy_drop": -0.046875,
+            "full_choice_margin": 5.23046875,
+            "full_choice_margin_drop": 1.8173828125,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "elevated_urea": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.75,
+            "full_choice_margin": 7.9716796875,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:elevated_urea:layer:31",
+                "target": "fact_logit:elevated_urea"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:14",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": 0.157318115234375
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": 0.120574951171875
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:23",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": 0.031665802001953125
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:elevated_urea:layer:31",
+                "weight": -0.6368408203125
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:elevated_urea:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.157318115234375,
+                "head": 14,
+                "id": "head:31:14",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": 0.120574951171875,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": 0.031665802001953125,
+                "head": 23,
+                "id": "head:31:23",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": -0.6368408203125,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:elevated_urea",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.75,
+            "full_choice_margin": 7.1357421875,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.75,
+                "full_choice_margin": 6.7470703125,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 1.0,
+                "degradation_pass": false,
+                "expected_accuracy": 0.75,
+                "expected_accuracy_drop": 0.0,
+                "full_choice_margin": 8.462890625,
+                "full_choice_margin_drop": -0.4912109375,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            },
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.75,
+                "full_choice_margin": 7.1357421875,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 1.0,
+                "degradation_pass": true,
+                "expected_accuracy": 0.75,
+                "expected_accuracy_drop": 0.0,
+                "full_choice_margin": 7.8623046875,
+                "full_choice_margin_drop": 0.109375,
+                "prompts": 64
+              },
+              "retained_components": 4,
+              "retained_heads": 3,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 1.0,
+            "degradation_pass": true,
+            "expected_accuracy": 0.75,
+            "expected_accuracy_drop": 0.0,
+            "full_choice_margin": 7.8623046875,
+            "full_choice_margin_drop": 0.109375,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 29,
+            "retained_components": 4
+          }
+        },
+        "high_respiratory_rate": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.984375,
+            "full_choice_margin": 6.5146484375,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:high_respiratory_rate:layer:31",
+                "target": "fact_logit:high_respiratory_rate"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:high_respiratory_rate:layer:31",
+                "weight": 0.1432342529296875
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:high_respiratory_rate:layer:31",
+                "weight": 0.130859375
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:high_respiratory_rate:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.1432342529296875,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": 0.130859375,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:high_respiratory_rate",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.984375,
+            "full_choice_margin": 4.70361328125,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 1.0,
+                "expected_accuracy": 0.984375,
+                "full_choice_margin": 4.70361328125,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.921875,
+                "degradation_pass": true,
+                "expected_accuracy": 0.90625,
+                "expected_accuracy_drop": 0.078125,
+                "full_choice_margin": 5.087890625,
+                "full_choice_margin_drop": 1.4267578125,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.921875,
+            "degradation_pass": true,
+            "expected_accuracy": 0.90625,
+            "expected_accuracy_drop": 0.078125,
+            "full_choice_margin": 5.087890625,
+            "full_choice_margin_drop": 1.4267578125,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        },
+        "low_blood_pressure": {
+          "causal_ablation": {
+            "intervention": "zero retained component outputs at the final decision token",
+            "pass": true
+          },
+          "fact_token_logit": {
+            "negative_token": "false",
+            "negative_token_id": 3934,
+            "positive_token": "true",
+            "positive_token_id": 1904,
+            "trace_direction": "backward_from_fact_token_logit"
+          },
+          "full_model": {
+            "agreement_with_full_model": 1.0,
+            "expected_accuracy": 0.78125,
+            "full_choice_margin": 3.0400390625,
+            "prompts": 64
+          },
+          "graph": {
+            "edges": [
+              {
+                "kind": "logit_path",
+                "source": "feature:low_blood_pressure:layer:31",
+                "target": "fact_logit:low_blood_pressure"
+              },
+              {
+                "kind": "upstream",
+                "source": "head:31:01",
+                "target": "feature:low_blood_pressure:layer:31",
+                "weight": 0.06600093841552734
+              },
+              {
+                "kind": "upstream",
+                "source": "mlp:31",
+                "target": "feature:low_blood_pressure:layer:31",
+                "weight": -0.02032470703125
+              }
+            ],
+            "nodes": [
+              {
+                "id": "feature:low_blood_pressure:layer:31",
+                "layer": 31,
+                "source": "Goal 07 mean-difference direction",
+                "type": "feature"
+              },
+              {
+                "direct_attribution": 0.06600093841552734,
+                "head": 1,
+                "id": "head:31:01",
+                "layer": 31,
+                "type": "attention_head"
+              },
+              {
+                "direct_attribution": -0.02032470703125,
+                "id": "mlp:31",
+                "layer": 31,
+                "type": "mlp"
+              },
+              {
+                "id": "fact_logit:low_blood_pressure",
+                "negative_token": "false",
+                "positive_token": "true",
+                "type": "fact_logit"
+              }
+            ]
+          },
+          "keep_only": {
+            "agreement_with_full_model": 0.953125,
+            "expected_accuracy": 0.828125,
+            "full_choice_margin": 2.21435546875,
+            "prompts": 64
+          },
+          "pruning": [
+            {
+              "keep_only": {
+                "agreement_with_full_model": 0.953125,
+                "expected_accuracy": 0.828125,
+                "full_choice_margin": 2.21435546875,
+                "prompts": 64
+              },
+              "remove_only": {
+                "agreement_with_full_model": 0.953125,
+                "degradation_pass": true,
+                "expected_accuracy": 0.734375,
+                "expected_accuracy_drop": 0.046875,
+                "full_choice_margin": 3.267578125,
+                "full_choice_margin_drop": -0.2275390625,
+                "prompts": 64
+              },
+              "retained_components": 2,
+              "retained_heads": 1,
+              "retained_mlps": 1
+            }
+          ],
+          "remove_only": {
+            "agreement_with_full_model": 0.953125,
+            "degradation_pass": true,
+            "expected_accuracy": 0.734375,
+            "expected_accuracy_drop": 0.046875,
+            "full_choice_margin": 3.267578125,
+            "full_choice_margin_drop": -0.2275390625,
+            "prompts": 64
+          },
+          "selection": {
+            "candidate_components": 33,
+            "keep_tolerance": 0.9,
+            "procedure": "rank last-token heads and MLPs by signed direct attribution on t06; retain the smallest tested prefix passing both gates",
+            "pruned_components": 31,
+            "retained_components": 2
+          }
+        }
+      },
+      "scope": {
+        "attention_heads_per_layer": 32,
+        "candidate_components_per_fact": 33,
+        "candidate_layers": [
+          31
+        ],
+        "context_policy": "layers 0-30 are the frozen context encoder; keep/remove interventions cover the feature-to-logit stage",
+        "feature_boundary_layer": 31,
+        "held_out_prompts": 64,
+        "intervention_position": "final structured fact decision token",
+        "selection_prompts": 32
+      }
+    }
+  },
+  "models_pinned": {
+    "control": {
+      "repo_id": "NousResearch/Meta-Llama-3-8B-Instruct",
+      "revision": "53346005fb0ef11d3b6a83b12c895cca40156b6c",
+      "role": "public Meta-Llama 3 instruction-tuned control"
+    },
+    "primary": {
+      "repo_id": "m42-health/Llama3-Med42-8B",
+      "revision": "ceab7e7ee4b9dbde7ba82867f34274db51487d83",
+      "role": "medical instruction-tuned translator"
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "claim_boundary": "candidate last-token circuits; no global minimality or whole-model causal-completeness claim",
+    "held_out_prompts": 64,
+    "held_out_templates": [
+      "t07",
+      "t08"
+    ],
+    "keep_only_tolerance": 0.9,
+    "logical_combinations": 32,
+    "numeric_boundaries": {
+      "age_years": [
+        "64",
+        "65/66"
+      ],
+      "blood_pressure_mmhg": [
+        "90/61",
+        "89/61 or 91/60"
+      ],
+      "respiratory_rate_per_minute": [
+        "29",
+        "30/31"
+      ],
+      "urea_mmol_l": [
+        "6.9/7.0",
+        "7.1"
+      ]
+    },
+    "numeric_boundaries_covered": true,
+    "selection_prompts": 32,
+    "train_templates": [
+      "t06"
+    ]
+  }
+}
