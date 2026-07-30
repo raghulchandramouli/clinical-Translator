@@ -1,0 +1,170 @@
+{
+  "certificate_id": "sha256:b15e08b009d6a9a9f3437f1cb2a99948bd8df8eae1d246200ed58f7c9ef24147",
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "guarantee_boundary": {
+    "counterexample": "a concrete witness falsifies the stated obligation",
+    "excluded": [
+      "whole-transformer verification",
+      "arbitrary token sequences",
+      "all natural-language paraphrases"
+    ],
+    "proved": "formal theorem or exhaustive check over a declared finite domain",
+    "unknown": "unsupported, timed out, or insufficiently bounded; never promoted to proof"
+  },
+  "pinned_inputs": {
+    "configs/contracts/curb65-llama-v2.json": {
+      "sha256": "09b2bc64e58ffc02da5f604177ba47534fef1280ca87c1b6d952bc703dfd804b"
+    },
+    "evidence/goal-09/report.json": {
+      "sha256": "14470bf234e8274fc21df5a055fd31e69610aba10278b0ff826714b74163117a"
+    },
+    "evidence/goal-10/report.json": {
+      "sha256": "7d7f9246427ebcd1525bb5430b40ac62be79f38820a6c6b4485925939381f3a2"
+    },
+    "lean-toolchain": {
+      "sha256": "8e3538e0ab5f81a3ee04927d8838c8c674e0e112838b4b3ce87ec218143276af"
+    },
+    "proofs/ClinicalTranslator/CURB65.lean": {
+      "sha256": "2f9ee40557e49dbe69bd10d873d19c9621e41a246aa48fcb714a9d333f90751b"
+    },
+    "src/clinical_translator/assurance/oracle.py": {
+      "sha256": "55b18b0a7a49ccc474ac872ef9258f516a2c7f6be93955c0e90399901902cda1"
+    },
+    "src/clinical_translator/assurance/proof_engine.py": {
+      "sha256": "d861ca4003fc18cdc2651b43bdaf85565741d4f88bfc42ab2ff9a330abf60f7e"
+    },
+    "src/clinical_translator/assurance/symbolic.py": {
+      "sha256": "dc0f7afb406873aab778d349ab665d93851df18102abd4c401aa64aa921ac329"
+    },
+    "src/clinical_translator/data/generator.py": {
+      "sha256": "fc3e540b2cdbeaaf690dce43b56dffc217cb42001815d6a6a7fb5c834c36bf09"
+    },
+    "uv.lock": {
+      "sha256": "5b24acd3057e4771a7332f0efd03d73f04beadbc2b26d08ba2203a4b6d070ca4"
+    }
+  },
+  "reproduce": [
+    "uv run python -m clinical_translator.assurance.proof_engine",
+    "uv run python -m unittest discover -s tests -v"
+  ],
+  "results": [
+    {
+      "certificate": {
+        "checker": "Lean kernel and elaborator",
+        "lean_version": "Lean (version 4.32.1, arm64-apple-darwin24.6.0, commit f054605aea4b840552cca2e725580bffd1e1b704, Release)",
+        "proof_sha256": "2f9ee40557e49dbe69bd10d873d19c9621e41a246aa48fcb714a9d333f90751b",
+        "theorem": "ClinicalTranslator.score_correct",
+        "truth_table_sha256": "3388bdc59f866ab85ded31feeab59ae8bc61743437042bd49099e5ccd48f50bc"
+      },
+      "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+      "domain": {
+        "cardinality": 32,
+        "description": "all five-Boolean CURB-65 fact assignments",
+        "id": "curb65-five-booleans-v1"
+      },
+      "id": "symbolic_scorer_theorem",
+      "kind": "formal",
+      "statement": "ClinicalTranslator.score equals its five-Boolean specification",
+      "status": "proved"
+    },
+    {
+      "certificate": {
+        "checker": "deterministic exhaustive enumeration",
+        "complete_records": 256,
+        "counterfactual_pairs": 640,
+        "dataset_sha256": "eafeca087ecd4228dffd59755b65c3466f1d25e90a020dfac9c9fe97cbe04123",
+        "incomplete_records": 6,
+        "replay_sha256": "eafeca087ecd4228dffd59755b65c3466f1d25e90a020dfac9c9fe97cbe04123"
+      },
+      "checks": {
+        "complete_records": true,
+        "counterfactual_pairs": true,
+        "deterministic_replay": true,
+        "incomplete_records": true,
+        "logical_combinations": true,
+        "numeric_boundaries": true,
+        "single_fact_pairs": true,
+        "synthetic_only": true
+      },
+      "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+      "domain": {
+        "cardinality": 902,
+        "description": "262 generated prompts and 640 matched counterfactual pairs",
+        "id": "curb65-vignette-grammar-v1"
+      },
+      "id": "generator_coverage",
+      "kind": "exact_finite",
+      "statement": "the pinned generator covers its complete declared finite domain",
+      "status": "proved"
+    },
+    {
+      "certificate": {
+        "cases": 32,
+        "checker": "exhaustive 32-case equivalence",
+        "truth_table_sha256": "db56516fba024c967d8c31749ad9d22a131bde0d92badcd3fbcabfd8c2cef51f"
+      },
+      "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+      "domain": {
+        "cardinality": 32,
+        "description": "all five-Boolean CURB-65 fact assignments",
+        "id": "curb65-five-booleans-v1"
+      },
+      "id": "symbolic_mechanism_equivalence",
+      "kind": "exact_finite",
+      "statement": "the Goal 10 five-input mechanism equals the Goal 03 scorer",
+      "status": "proved"
+    },
+    {
+      "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+      "counterexample": {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "incomplete_score": 0,
+        "specification_score": 1
+      },
+      "domain": {
+        "cardinality": 32,
+        "description": "all five-Boolean CURB-65 fact assignments",
+        "id": "curb65-five-booleans-v1"
+      },
+      "id": "incomplete_scorer_equivalence",
+      "kind": "exact_finite",
+      "statement": "the scorer that omits confusion equals the complete specification",
+      "status": "counterexample"
+    },
+    {
+      "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+      "domain": {
+        "cardinality": 160,
+        "description": "160 matched interventions over templates t07 and t08",
+        "id": "goal09-held-out-interventions-v1"
+      },
+      "id": "local_neural_slice_certification",
+      "kind": "empirical",
+      "prerequisites": {
+        "activation_bounds": null,
+        "alignment_complete": false,
+        "slice_tractable": false
+      },
+      "reason": "Goal 10 alignment is incomplete and explicit bounded activation ranges for a tractable neural slice are unavailable",
+      "statement": "the extracted neural slice implements the five symbolic variables",
+      "status": "unknown"
+    }
+  ],
+  "runtime": {
+    "lean": "Lean (version 4.32.1, arm64-apple-darwin24.6.0, commit f054605aea4b840552cca2e725580bffd1e1b704, Release)",
+    "python": "3.12.13",
+    "timeout_seconds": 60
+  },
+  "schema_version": 1,
+  "summary": {
+    "counterexample": 1,
+    "proved": 3,
+    "unknown": 1
+  }
+}
