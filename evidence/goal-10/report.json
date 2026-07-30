@@ -1,0 +1,597 @@
+{
+  "candidate_mechanism": {
+    "expression": "score = confusion + elevated_urea + high_respiratory_rate + low_blood_pressure + age_at_least_65",
+    "hidden_variables": [],
+    "implementation": "sum(bool(fact) for fact in the five declared inputs)",
+    "inputs": [
+      "confusion",
+      "elevated_urea",
+      "high_respiratory_rate",
+      "low_blood_pressure",
+      "age_at_least_65"
+    ]
+  },
+  "claim_boundary": "The five-input sum is the Goal 03 oracle. Neural mappings remain limited to Goal 09's tested synthetic interventions.",
+  "counterexamples": [
+    {
+      "aligned_score": null,
+      "oracle_score": 1,
+      "reason": "incomplete neural alignment; score is not forced",
+      "status": "mixed",
+      "variable": "confusion",
+      "witness": {
+        "age_at_least_65": false,
+        "confusion": true,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      }
+    },
+    {
+      "aligned_score": null,
+      "oracle_score": 1,
+      "reason": "incomplete neural alignment; score is not forced",
+      "status": "mixed",
+      "variable": "elevated_urea",
+      "witness": {
+        "age_at_least_65": false,
+        "confusion": false,
+        "elevated_urea": true,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      }
+    },
+    {
+      "aligned_score": null,
+      "oracle_score": 1,
+      "reason": "incomplete neural alignment; score is not forced",
+      "status": "mixed",
+      "variable": "high_respiratory_rate",
+      "witness": {
+        "age_at_least_65": false,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": false
+      }
+    },
+    {
+      "aligned_score": null,
+      "oracle_score": 1,
+      "reason": "incomplete neural alignment; score is not forced",
+      "status": "mixed",
+      "variable": "low_blood_pressure",
+      "witness": {
+        "age_at_least_65": false,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": true
+      }
+    },
+    {
+      "aligned_score": null,
+      "oracle_score": 1,
+      "reason": "incomplete neural alignment; score is not forced",
+      "status": "mixed",
+      "variable": "age_at_least_65",
+      "witness": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      }
+    }
+  ],
+  "neural_alignment": {
+    "aligned_score": null,
+    "complete": false,
+    "incomplete_variables": [
+      "confusion",
+      "elevated_urea",
+      "high_respiratory_rate",
+      "low_blood_pressure",
+      "age_at_least_65"
+    ],
+    "status": "incomplete"
+  },
+  "oracle_alignment": {
+    "combinations_checked": 32,
+    "lean": "ClinicalTranslator.score",
+    "matches": true,
+    "python": "clinical_translator.assurance.oracle.score",
+    "theorem": "ClinicalTranslator.score_correct",
+    "truth_table": [
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 0,
+        "symbolic_score": 0
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 1,
+        "symbolic_score": 1
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 1,
+        "symbolic_score": 1
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 1,
+        "symbolic_score": 1
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 1,
+        "symbolic_score": 1
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": false,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 4,
+        "symbolic_score": 4
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 1,
+        "symbolic_score": 1
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": false,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 4,
+        "symbolic_score": 4
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 2,
+        "symbolic_score": 2
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": false,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 4,
+        "symbolic_score": 4
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 3,
+        "symbolic_score": 3
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": false
+        },
+        "match": true,
+        "oracle_score": 4,
+        "symbolic_score": 4
+      },
+      {
+        "facts": {
+          "age_at_least_65": false,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 4,
+        "symbolic_score": 4
+      },
+      {
+        "facts": {
+          "age_at_least_65": true,
+          "confusion": true,
+          "elevated_urea": true,
+          "high_respiratory_rate": true,
+          "low_blood_pressure": true
+        },
+        "match": true,
+        "oracle_score": 5,
+        "symbolic_score": 5
+      }
+    ]
+  },
+  "schema_version": 1,
+  "variables": {
+    "age_at_least_65": {
+      "alignment": {
+        "eligible_pairs": 12,
+        "mapping": "matched target residual -> corresponding Boolean fact token",
+        "predicted_direction_rate": 1.0,
+        "reason": "mixed causal evidence; mapping remains a candidate",
+        "unrelated_output_stability": 0.9453125
+      },
+      "causal_evidence": "evidence/goal-09/report.json#/variables/age_at_least_65",
+      "circuit_state": {
+        "feature": "feature:age_at_least_65:layer:31",
+        "readout": "true iff the structured fact-token margin is >= 0",
+        "retained_components": [
+          "head:31:01",
+          "mlp:31"
+        ]
+      },
+      "status": "mixed",
+      "symbol": "age_at_least_65"
+    },
+    "confusion": {
+      "alignment": {
+        "eligible_pairs": 19,
+        "mapping": "matched target residual -> corresponding Boolean fact token",
+        "predicted_direction_rate": 1.0,
+        "reason": "mixed causal evidence; mapping remains a candidate",
+        "unrelated_output_stability": 0.90625
+      },
+      "causal_evidence": "evidence/goal-09/report.json#/variables/confusion",
+      "circuit_state": {
+        "feature": "feature:confusion:layer:31",
+        "readout": "true iff the structured fact-token margin is >= 0",
+        "retained_components": [
+          "head:31:01",
+          "mlp:31"
+        ]
+      },
+      "status": "mixed",
+      "symbol": "confusion"
+    },
+    "elevated_urea": {
+      "alignment": {
+        "eligible_pairs": 16,
+        "mapping": "matched target residual -> corresponding Boolean fact token",
+        "predicted_direction_rate": 1.0,
+        "reason": "mixed causal evidence; mapping remains a candidate",
+        "unrelated_output_stability": 0.8359375
+      },
+      "causal_evidence": "evidence/goal-09/report.json#/variables/elevated_urea",
+      "circuit_state": {
+        "feature": "feature:elevated_urea:layer:31",
+        "readout": "true iff the structured fact-token margin is >= 0",
+        "retained_components": [
+          "head:31:14",
+          "head:31:01",
+          "head:31:23",
+          "mlp:31"
+        ]
+      },
+      "status": "mixed",
+      "symbol": "elevated_urea"
+    },
+    "high_respiratory_rate": {
+      "alignment": {
+        "eligible_pairs": 31,
+        "mapping": "matched target residual -> corresponding Boolean fact token",
+        "predicted_direction_rate": 1.0,
+        "reason": "mixed causal evidence; mapping remains a candidate",
+        "unrelated_output_stability": 0.890625
+      },
+      "causal_evidence": "evidence/goal-09/report.json#/variables/high_respiratory_rate",
+      "circuit_state": {
+        "feature": "feature:high_respiratory_rate:layer:31",
+        "readout": "true iff the structured fact-token margin is >= 0",
+        "retained_components": [
+          "head:31:01",
+          "mlp:31"
+        ]
+      },
+      "status": "mixed",
+      "symbol": "high_respiratory_rate"
+    },
+    "low_blood_pressure": {
+      "alignment": {
+        "eligible_pairs": 23,
+        "mapping": "matched target residual -> corresponding Boolean fact token",
+        "predicted_direction_rate": 1.0,
+        "reason": "mixed causal evidence; mapping remains a candidate",
+        "unrelated_output_stability": 0.921875
+      },
+      "causal_evidence": "evidence/goal-09/report.json#/variables/low_blood_pressure",
+      "circuit_state": {
+        "feature": "feature:low_blood_pressure:layer:31",
+        "readout": "true iff the structured fact-token margin is >= 0",
+        "retained_components": [
+          "head:31:01",
+          "mlp:31"
+        ]
+      },
+      "status": "mixed",
+      "symbol": "low_blood_pressure"
+    }
+  }
+}
