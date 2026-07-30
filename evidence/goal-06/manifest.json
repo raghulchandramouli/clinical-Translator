@@ -1,0 +1,989 @@
+{
+  "capture": {
+    "backend": "native_pytorch_forward_hooks",
+    "dtype": "torch.bfloat16",
+    "layers": [
+      0,
+      15,
+      31
+    ],
+    "scope": "six fixed smoke prompts; one token per tensor",
+    "stored_device": "cpu",
+    "token_policy": "last_prompt_token"
+  },
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "model": {
+    "repo_id": "m42-health/Llama3-Med42-8B",
+    "revision": "ceab7e7ee4b9dbde7ba82867f34274db51487d83",
+    "role": "medical instruction-tuned translator"
+  },
+  "parity": {
+    "exact_match": true,
+    "output_sha256": [
+      "5148eb73afec1315ec5ff62943bb62450661685cf8de5114920308354e59bc2e",
+      "5148eb73afec1315ec5ff62943bb62450661685cf8de5114920308354e59bc2e",
+      "3b601808396ecb19b30c2ad45ca7989ed13b54114aa3a6cddf9e5f74023bc63f",
+      "468c83df2ce55bc7e078b6085c745917a15e2a9f3a037e0f55c3f1e6baa6746f",
+      "255f9c140842d87a1c1e849580758f37f35e6a78fc9ecd0f500b960e777b5486",
+      "5148eb73afec1315ec5ff62943bb62450661685cf8de5114920308354e59bc2e"
+    ],
+    "prompt_count": 6
+  },
+  "records": [
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-00000.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      },
+      "prompt": {
+        "id": "complete-t01-00000",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "65538047b49a3a314b8f02ac89bb8cde8e4e6f70f64b56278d51406906f9f144"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 310
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 310,
+        "text": "{"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-00001.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      },
+      "prompt": {
+        "id": "complete-t01-00001",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "e34c64a379af17627762f92a2f6d0c4dd367a2978bac771cb39d9811b8f71cc1"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 310
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 310,
+        "text": "{"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-00010.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": true
+      },
+      "prompt": {
+        "id": "complete-t01-00010",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "2556688d99bde3cafcab5f38f880ce8109a6aafff7cd95a5906804a90d8524e4"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 310
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 310,
+        "text": "{"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-00100.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": false
+      },
+      "prompt": {
+        "id": "complete-t01-00100",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "2b7322edbd0a027d135c03828e0ac938f5a451d9c63d158bcda20866a0106fe3"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 310
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 310,
+        "text": "{"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-01000.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": true,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      },
+      "prompt": {
+        "id": "complete-t01-01000",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "49d7dd36cf45003b0804ad8db5b15a5865b3c64c51135d33b5ee0bf4a96c64a1"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 310
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 310
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 310,
+        "text": "{"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 342973,
+        "format": "torch.save",
+        "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/primary/complete-t01-10000.pt",
+        "volume": "clinical-translator-activations"
+      },
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      },
+      "prompt": {
+        "id": "complete-t01-10000",
+        "protocol": "curb65-five-facts-v1",
+        "sha256": "02fecad890e8d97e4f5f207ad658b2f161761cf13e6322a260aca37933485c55"
+      },
+      "tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "key": "token_embedding",
+          "layer": null,
+          "name": "token_embedding",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_residual",
+          "layer": 0,
+          "name": "layer_00_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_attention",
+          "layer": 0,
+          "name": "layer_00_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_00_mlp",
+          "layer": 0,
+          "name": "layer_00_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_residual",
+          "layer": 15,
+          "name": "layer_15_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_attention",
+          "layer": 15,
+          "name": "layer_15_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_15_mlp",
+          "layer": 15,
+          "name": "layer_15_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_residual",
+          "layer": 31,
+          "name": "layer_31_residual",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_attention",
+          "layer": 31,
+          "name": "layer_31_attention",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "layer_31_mlp",
+          "layer": 31,
+          "name": "layer_31_mlp",
+          "shape": [
+            1,
+            1,
+            4096
+          ],
+          "token_position": 309
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "key": "next_token_logits",
+          "layer": null,
+          "name": "next_token_logits",
+          "shape": [
+            1,
+            1,
+            128256
+          ],
+          "token_position": 309
+        }
+      ],
+      "token": {
+        "id": 90,
+        "position": 309,
+        "text": "{"
+      }
+    }
+  ],
+  "schema_version": 1
+}
