@@ -1,0 +1,68 @@
+{
+  "claim_boundary": "Reducers search only the finite Goal 01 grammar, recorded Goal 09 interventions, and Goal 11 formal obligations.",
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "corpus": {
+    "active": 65,
+    "fixed": 1,
+    "path": "evidence/goal-12/regressions.jsonl",
+    "records": 66,
+    "refinement_targets": {
+      "behaviour_evaluator": 50,
+      "circuit_extraction": 42,
+      "feature_discovery": 53,
+      "proof_engine": 1
+    },
+    "sha256": "590ac20f5d89b62b14404a632057228aad482ce1468fbc4eaadd660623855436"
+  },
+  "demo": {
+    "after": {
+      "actual": 1,
+      "implementation": "score",
+      "status": "fixed"
+    },
+    "before": {
+      "actual": 0,
+      "implementation": "incomplete_score",
+      "status": "counterexample"
+    },
+    "expected": 1,
+    "input": {
+      "age_at_least_65": false,
+      "confusion": true,
+      "elevated_urea": false,
+      "high_respiratory_rate": false,
+      "low_blood_pressure": false
+    },
+    "name": "omitted-confusion"
+  },
+  "reduction_impossible": [
+    {
+      "reason": "Goal 10 alignment is incomplete and explicit bounded activation ranges for a tractable neural slice are unavailable",
+      "source": "evidence/goal-11/certificate.json",
+      "source_failure_id": "goal11:local_neural_slice_certification"
+    }
+  ],
+  "schema_version": 1,
+  "source_coverage": {
+    "goal05": {
+      "input": 961,
+      "mapped": 961,
+      "reduction_impossible": 0
+    },
+    "goal09": {
+      "input": 15,
+      "mapped": 15,
+      "reduction_impossible": 0
+    },
+    "goal11": {
+      "input": 2,
+      "mapped": 1,
+      "reduction_impossible": 1
+    }
+  },
+  "sources": {
+    "behavioural": "evidence/goal-05/failures.jsonl",
+    "causal": "evidence/goal-09/report.json",
+    "formal": "evidence/goal-11/certificate.json"
+  }
+}
