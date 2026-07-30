@@ -1,0 +1,613 @@
+{
+  "capture": {
+    "backend": "native_pytorch_forward_hooks",
+    "dtype": "torch.bfloat16",
+    "layers": [
+      0,
+      15,
+      31
+    ],
+    "token_policy": "last_prompt_token"
+  },
+  "causal_intervention": {
+    "baseline_source_facts": {
+      "age_at_least_65": false,
+      "confusion": false,
+      "elevated_urea": true,
+      "high_respiratory_rate": false,
+      "low_blood_pressure": true
+    },
+    "baseline_target_facts": {
+      "age_at_least_65": true,
+      "confusion": false,
+      "elevated_urea": true,
+      "high_respiratory_rate": false,
+      "low_blood_pressure": true
+    },
+    "candidate_id": "mean-direction-layer-31-age_at_least_65",
+    "criterion": "age_at_least_65",
+    "facts": {
+      "age_at_least_65": true,
+      "confusion": false,
+      "elevated_urea": true,
+      "high_respiratory_rate": false,
+      "low_blood_pressure": true
+    },
+    "layer": 31,
+    "multiplier": 1,
+    "other_facts_invariant": true,
+    "pair_id": "pair-t07-01000-age_at_least_65",
+    "policy": "add the learned mean direction at the final sequence position on every decode step",
+    "result": "validated",
+    "source_id": "complete-t07-01000",
+    "success": true,
+    "target_changed": true,
+    "target_id": "complete-t07-01001",
+    "template_id": "t07"
+  },
+  "claim_boundary": "Probe decodability and one intervention nominate candidates; they are not circuit-level causal explanations.",
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "dictionary": {
+    "active_features": 64,
+    "artifact": {
+      "bytes": 1092633,
+      "dtype": "torch.bfloat16",
+      "format": "torch.save",
+      "layer": 31,
+      "path": "curb65-llama-v2/fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de/features/feature_dictionary.pt",
+      "volume": "clinical-translator-activations"
+    },
+    "decoder": "tied PCA dictionary",
+    "encoder": "PCA projection followed by top-k activation",
+    "external_dictionary_reason": "no feature dictionary pinned to the exact Med42 revision was available for a parity measurement",
+    "external_dictionary_used": false,
+    "rank": 128,
+    "reconstruction": [
+      {
+        "adequate": false,
+        "held_out_explained_variance": 0.3262731432914734,
+        "held_out_rmse": 0.0009386634337715805,
+        "layer": 0,
+        "train_explained_variance": 0.9979307651519775,
+        "train_rmse": 2.1141095203347504e-05
+      },
+      {
+        "adequate": true,
+        "held_out_explained_variance": 0.7495671510696411,
+        "held_out_rmse": 0.004891134798526764,
+        "layer": 15,
+        "train_explained_variance": 0.9954508543014526,
+        "train_rmse": 0.00059827312361449
+      },
+      {
+        "adequate": true,
+        "held_out_explained_variance": 0.7997850775718689,
+        "held_out_rmse": 0.022305648773908615,
+        "layer": 31,
+        "train_explained_variance": 0.9928857684135437,
+        "train_rmse": 0.004115591756999493
+      }
+    ],
+    "reconstruction_gate": "held_out_explained_variance >= 0.5",
+    "source": "task_specific_topk_linear_autoencoder"
+  },
+  "intervention_attempts": [
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 1,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 2,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 4,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 8,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 16,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-00-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 32,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 1,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 2,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 4,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 8,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 16,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-confusion",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 32,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 1,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 2,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": true,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 4,
+      "other_facts_invariant": false,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": true,
+        "elevated_urea": true,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 8,
+      "other_facts_invariant": false,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "validated",
+      "target_changed": true
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 16,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-confusion",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 32,
+      "pair_id": "pair-t07-00111-confusion",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": false
+      },
+      "multiplier": 1,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "validated",
+      "target_changed": false
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": false,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 2,
+      "other_facts_invariant": false,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "validated",
+      "target_changed": true
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": true,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 4,
+      "other_facts_invariant": false,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "validated",
+      "target_changed": true
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": true,
+        "elevated_urea": true,
+        "high_respiratory_rate": true,
+        "low_blood_pressure": true
+      },
+      "multiplier": 8,
+      "other_facts_invariant": false,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "validated",
+      "target_changed": true
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 16,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-15-high_respiratory_rate",
+      "error": "model output must be exactly one JSON object",
+      "multiplier": 32,
+      "pair_id": "pair-t07-00000-high_respiratory_rate",
+      "result": "parser_failure"
+    },
+    {
+      "candidate_id": "mean-direction-layer-31-age_at_least_65",
+      "facts": {
+        "age_at_least_65": true,
+        "confusion": false,
+        "elevated_urea": true,
+        "high_respiratory_rate": false,
+        "low_blood_pressure": true
+      },
+      "multiplier": 1,
+      "other_facts_invariant": true,
+      "pair_id": "pair-t07-01000-age_at_least_65",
+      "result": "validated",
+      "target_changed": true
+    }
+  ],
+  "model": {
+    "repo_id": "m42-health/Llama3-Med42-8B",
+    "revision": "ceab7e7ee4b9dbde7ba82867f34274db51487d83",
+    "role": "medical instruction-tuned translator"
+  },
+  "ranked_candidates": [
+    {
+      "criterion": "confusion",
+      "held_out_accuracy": 0.90625,
+      "id": "mean-direction-layer-00-confusion",
+      "layer": 0,
+      "method": "train_mean_difference",
+      "rank": 1,
+      "threshold": -0.11587212979793549,
+      "train_accuracy": 0.8333333134651184,
+      "train_projection_gap": 0.006252974271774292
+    },
+    {
+      "criterion": "confusion",
+      "held_out_accuracy": 0.765625,
+      "id": "mean-direction-layer-31-confusion",
+      "layer": 31,
+      "method": "train_mean_difference",
+      "rank": 2,
+      "threshold": -9.892106056213379,
+      "train_accuracy": 0.7916666865348816,
+      "train_projection_gap": 2.8801803588867188
+    },
+    {
+      "criterion": "confusion",
+      "held_out_accuracy": 0.75,
+      "id": "mean-direction-layer-15-confusion",
+      "layer": 15,
+      "method": "train_mean_difference",
+      "rank": 3,
+      "threshold": -0.407487191259861,
+      "train_accuracy": 0.7760416865348816,
+      "train_projection_gap": 0.463205024600029
+    },
+    {
+      "criterion": "high_respiratory_rate",
+      "held_out_accuracy": 0.71875,
+      "id": "mean-direction-layer-15-high_respiratory_rate",
+      "layer": 15,
+      "method": "train_mean_difference",
+      "rank": 4,
+      "threshold": -0.0956261157989502,
+      "train_accuracy": 0.7604166865348816,
+      "train_projection_gap": 0.44858318567276
+    },
+    {
+      "criterion": "age_at_least_65",
+      "held_out_accuracy": 0.71875,
+      "id": "mean-direction-layer-31-age_at_least_65",
+      "layer": 31,
+      "method": "train_mean_difference",
+      "rank": 5,
+      "threshold": -8.629435300827026,
+      "train_accuracy": 0.7239583134651184,
+      "train_projection_gap": 2.458853244781494
+    },
+    {
+      "criterion": "age_at_least_65",
+      "held_out_accuracy": 0.6875,
+      "id": "mean-direction-layer-15-age_at_least_65",
+      "layer": 15,
+      "method": "train_mean_difference",
+      "rank": 6,
+      "threshold": -0.07207023352384567,
+      "train_accuracy": 0.75,
+      "train_projection_gap": 0.43741609156131744
+    },
+    {
+      "criterion": "elevated_urea",
+      "held_out_accuracy": 0.6875,
+      "id": "mean-direction-layer-15-elevated_urea",
+      "layer": 15,
+      "method": "train_mean_difference",
+      "rank": 7,
+      "threshold": 0.07611076533794403,
+      "train_accuracy": 0.6510416865348816,
+      "train_projection_gap": 0.317839652299881
+    },
+    {
+      "criterion": "elevated_urea",
+      "held_out_accuracy": 0.6875,
+      "id": "mean-direction-layer-31-elevated_urea",
+      "layer": 31,
+      "method": "train_mean_difference",
+      "rank": 8,
+      "threshold": -10.430160999298096,
+      "train_accuracy": 0.6302083134651184,
+      "train_projection_gap": 1.5952444076538086
+    },
+    {
+      "criterion": "high_respiratory_rate",
+      "held_out_accuracy": 0.65625,
+      "id": "mean-direction-layer-31-high_respiratory_rate",
+      "layer": 31,
+      "method": "train_mean_difference",
+      "rank": 9,
+      "threshold": -9.245867729187012,
+      "train_accuracy": 0.7135416865348816,
+      "train_projection_gap": 1.9922962188720703
+    },
+    {
+      "criterion": "age_at_least_65",
+      "held_out_accuracy": 0.640625,
+      "id": "mean-direction-layer-00-age_at_least_65",
+      "layer": 0,
+      "method": "train_mean_difference",
+      "rank": 10,
+      "threshold": -0.11986981704831123,
+      "train_accuracy": 0.53125,
+      "train_projection_gap": 0.002511240541934967
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "held_out_accuracy": 0.625,
+      "id": "mean-direction-layer-15-low_blood_pressure",
+      "layer": 15,
+      "method": "train_mean_difference",
+      "rank": 11,
+      "threshold": 0.38809898495674133,
+      "train_accuracy": 0.6354166865348816,
+      "train_projection_gap": 0.08985030651092529
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "held_out_accuracy": 0.625,
+      "id": "mean-direction-layer-31-low_blood_pressure",
+      "layer": 31,
+      "method": "train_mean_difference",
+      "rank": 12,
+      "threshold": -11.907868385314941,
+      "train_accuracy": 0.59375,
+      "train_projection_gap": 0.7069358825683594
+    },
+    {
+      "criterion": "high_respiratory_rate",
+      "held_out_accuracy": 0.609375,
+      "id": "mean-direction-layer-00-high_respiratory_rate",
+      "layer": 0,
+      "method": "train_mean_difference",
+      "rank": 13,
+      "threshold": -0.030444594100117683,
+      "train_accuracy": 0.5520833134651184,
+      "train_projection_gap": 0.001301877200603485
+    },
+    {
+      "criterion": "elevated_urea",
+      "held_out_accuracy": 0.5,
+      "id": "mean-direction-layer-00-elevated_urea",
+      "layer": 0,
+      "method": "train_mean_difference",
+      "rank": 14,
+      "threshold": -0.10110455751419067,
+      "train_accuracy": 0.7395833134651184,
+      "train_projection_gap": 0.003240540623664856
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "held_out_accuracy": 0.5,
+      "id": "mean-direction-layer-00-low_blood_pressure",
+      "layer": 0,
+      "method": "train_mean_difference",
+      "rank": 15,
+      "threshold": -0.11326560750603676,
+      "train_accuracy": 0.5208333134651184,
+      "train_projection_gap": 0.0018077418208122253
+    }
+  ],
+  "schema_version": 1,
+  "split": {
+    "held_out_prompts": 64,
+    "held_out_templates": [
+      "t07",
+      "t08"
+    ],
+    "policy": "paraphrase_template",
+    "train_prompts": 192,
+    "train_templates": [
+      "t01",
+      "t02",
+      "t03",
+      "t04",
+      "t05",
+      "t06"
+    ]
+  }
+}

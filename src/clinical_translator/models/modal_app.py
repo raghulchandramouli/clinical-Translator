@@ -33,6 +33,7 @@ runner_image = (
             "TRANSFORMERS_OFFLINE": "1",
         }
     )
+    .add_local_python_source("clinical_translator")
 )
 
 
@@ -269,6 +270,347 @@ class Translator:
             "records": records,
         }
 
+    @modal.method()
+    def discover_features(
+        self,
+        prompts: list[str],
+        records: list[dict[str, Any]],
+        intervention_cases: list[dict[str, Any]],
+        generation: dict[str, Any],
+        seeds: dict[str, int],
+        artifact_root: str,
+    ) -> dict[str, Any]:
+        import torch
+
+        from clinical_translator.contracts.validation import FACTS
+        from clinical_translator.interpretability.capture import CAPTURE_LAYERS
+        from clinical_translator.interpretability.features import (
+            DICTIONARY_ACTIVE_FEATURES,
+            DICTIONARY_RANK,
+            HELD_OUT_TEMPLATES,
+            TRAIN_TEMPLATES,
+        )
+        from clinical_translator.models.protocol import parse
+
+        if len(prompts) != len(records):
+            raise ValueError("prompts and feature records must match")
+        layers = self.model.model.layers
+        activations = {layer: [] for layer in CAPTURE_LAYERS}
+        current: dict[int, Any] = {}
+
+        def save(layer: int):
+            def hook(_module: Any, _inputs: Any, output: Any) -> None:
+                tensor = output[0] if isinstance(output, tuple) else output
+                current[layer] = tensor[:, -1, :].detach().float().cpu()
+
+            return hook
+
+        handles = [
+            layers[layer].register_forward_hook(save(layer))
+            for layer in CAPTURE_LAYERS
+        ]
+        try:
+            with torch.inference_mode():
+                for text in prompts:
+                    current.clear()
+                    inputs = self.tokenizer.apply_chat_template(
+                        [
+                            {"role": "user", "content": text},
+                            {"role": "assistant", "content": "{"},
+                        ],
+                        continue_final_message=True,
+                        return_dict=True,
+                        return_tensors="pt",
+                    ).to("cuda")
+                    self.model(**inputs, use_cache=False, logits_to_keep=1)
+                    for layer in CAPTURE_LAYERS:
+                        activations[layer].append(current[layer])
+        finally:
+            for handle in handles:
+                handle.remove()
+
+        matrices = {
+            layer: torch.cat(rows, dim=0) for layer, rows in activations.items()
+        }
+        train_mask = torch.tensor(
+            [
+                record["template_id"] in TRAIN_TEMPLATES
+                for record in records
+            ],
+            dtype=torch.bool,
+        )
+        held_out_mask = torch.tensor(
+            [
+                record["template_id"] in HELD_OUT_TEMPLATES
+                for record in records
+            ],
+            dtype=torch.bool,
+        )
+        labels = {
+            fact: torch.tensor(
+                [record["facts"][fact] for record in records],
+                dtype=torch.bool,
+            )
+            for fact in FACTS
+        }
+        candidates = []
+        directions: dict[int, dict[str, Any]] = {}
+        dictionaries: dict[int, Any] = {}
+        reconstruction = []
+        for layer, matrix in matrices.items():
+            directions[layer] = {}
+            for fact in FACTS:
+                fact_labels = labels[fact]
+                positive = matrix[train_mask & fact_labels].mean(dim=0)
+                negative = matrix[train_mask & ~fact_labels].mean(dim=0)
+                direction = positive - negative
+                direction /= direction.norm()
+                projection = matrix @ direction
+                positive_mean = float(projection[train_mask & fact_labels].mean())
+                negative_mean = float(projection[train_mask & ~fact_labels].mean())
+                threshold = (positive_mean + negative_mean) / 2
+                predicted = projection >= threshold
+                directions[layer][fact] = direction
+                candidates.append(
+                    {
+                        "id": f"mean-direction-layer-{layer:02d}-{fact}",
+                        "criterion": fact,
+                        "layer": layer,
+                        "method": "train_mean_difference",
+                        "train_accuracy": float(
+                            (predicted[train_mask] == fact_labels[train_mask])
+                            .float()
+                            .mean()
+                        ),
+                        "held_out_accuracy": float(
+                            (predicted[held_out_mask] == fact_labels[held_out_mask])
+                            .float()
+                            .mean()
+                        ),
+                        "threshold": threshold,
+                        "train_projection_gap": positive_mean - negative_mean,
+                    }
+                )
+
+            center = matrix[train_mask].mean(dim=0)
+            train_centered = matrix[train_mask] - center
+            gram = train_centered @ train_centered.T
+            eigenvalues, eigenvectors = torch.linalg.eigh(gram)
+            order = eigenvalues.argsort(descending=True)[:DICTIONARY_RANK]
+            values = eigenvalues[order].clamp_min(1e-12).sqrt()
+            dictionary = (
+                eigenvectors[:, order].T @ train_centered
+            ) / values[:, None]
+            dictionaries[layer] = dictionary
+
+            def reconstruction_score(mask: Any) -> tuple[float, float]:
+                centered = matrix[mask] - center
+                encoded = centered @ dictionary.T
+                keep = encoded.abs().topk(
+                    DICTIONARY_ACTIVE_FEATURES,
+                    dim=1,
+                ).indices
+                sparse = torch.zeros_like(encoded).scatter(
+                    1,
+                    keep,
+                    encoded.gather(1, keep),
+                )
+                rebuilt = sparse @ dictionary
+                error = (centered - rebuilt).square().sum()
+                total = centered.square().sum()
+                return (
+                    float(1 - error / total),
+                    float((error / centered.numel()).sqrt()),
+                )
+
+            train_ev, train_rmse = reconstruction_score(train_mask)
+            held_out_ev, held_out_rmse = reconstruction_score(held_out_mask)
+            reconstruction.append(
+                {
+                    "layer": layer,
+                    "train_explained_variance": train_ev,
+                    "held_out_explained_variance": held_out_ev,
+                    "train_rmse": train_rmse,
+                    "held_out_rmse": held_out_rmse,
+                    "adequate": held_out_ev >= 0.5,
+                }
+            )
+
+        candidates.sort(
+            key=lambda item: (
+                -item["held_out_accuracy"],
+                -item["train_accuracy"],
+                item["layer"],
+                item["criterion"],
+            )
+        )
+        for rank, candidate in enumerate(candidates, 1):
+            candidate["rank"] = rank
+
+        by_id = {record["id"]: index for index, record in enumerate(records)}
+        successful: dict[str, Any] | None = None
+        attempts = []
+        torch.manual_seed(seeds["torch"])
+        torch.cuda.manual_seed_all(seeds["cuda"])
+        for candidate in candidates:
+            cases = [
+                case
+                for case in intervention_cases
+                if case["criterion"] == candidate["criterion"]
+            ][:1]
+            for case in cases:
+                layer = candidate["layer"]
+                direction = directions[layer][candidate["criterion"]]
+                source = matrices[layer][by_id[case["source_id"]]]
+                target = matrices[layer][by_id[case["target_id"]]]
+                pair_gap = max(
+                    float((target - source) @ direction),
+                    candidate["train_projection_gap"],
+                )
+                for multiplier in (1, 2, 4, 8, 16, 32):
+                    delta = (
+                        direction * pair_gap * multiplier
+                    ).to(device="cuda", dtype=torch.bfloat16)
+
+                    def steer(_module: Any, _inputs: Any, output: Any) -> Any:
+                        tensor = output[0] if isinstance(output, tuple) else output
+                        changed = tensor.clone()
+                        changed[:, -1, :] += delta
+                        return (
+                            (changed, *output[1:])
+                            if isinstance(output, tuple)
+                            else changed
+                        )
+
+                    text = prompts[by_id[case["source_id"]]]
+                    inputs = self.tokenizer.apply_chat_template(
+                        [
+                            {"role": "user", "content": text},
+                            {"role": "assistant", "content": "{"},
+                        ],
+                        continue_final_message=True,
+                        return_dict=True,
+                        return_tensors="pt",
+                    ).to("cuda")
+                    handle = layers[layer].register_forward_hook(steer)
+                    try:
+                        with torch.inference_mode():
+                            tokens = self.model.generate(
+                                **inputs,
+                                do_sample=generation["do_sample"],
+                                max_new_tokens=generation["max_new_tokens"],
+                            )
+                    finally:
+                        handle.remove()
+                    raw = "{" + self.tokenizer.decode(
+                        tokens[0, inputs["input_ids"].shape[-1] :],
+                        skip_special_tokens=True,
+                    ).strip()
+                    attempt = {
+                        "candidate_id": candidate["id"],
+                        "pair_id": case["id"],
+                        "multiplier": multiplier,
+                    }
+                    try:
+                        facts = parse(raw)
+                    except (TypeError, ValueError) as error:
+                        attempt["result"] = "parser_failure"
+                        attempt["error"] = str(error)
+                    else:
+                        fact = candidate["criterion"]
+                        target_changed = (
+                            facts[fact] is True
+                            and case["source_facts"][fact] is False
+                        )
+                        others_stable = all(
+                            facts[name] == case["source_facts"][name]
+                            for name in FACTS
+                            if name != fact
+                        )
+                        attempt.update(
+                            {
+                                "result": "validated",
+                                "facts": facts,
+                                "target_changed": target_changed,
+                                "other_facts_invariant": others_stable,
+                            }
+                        )
+                        if target_changed and others_stable:
+                            successful = {
+                                "success": True,
+                                **attempt,
+                                "criterion": fact,
+                                "layer": layer,
+                                "source_id": case["source_id"],
+                                "target_id": case["target_id"],
+                                "template_id": case["source_id"].split("-")[1],
+                                "policy": (
+                                    "add the learned mean direction at the final "
+                                    "sequence position on every decode step"
+                                ),
+                                "baseline_source_facts": case["source_facts"],
+                                "baseline_target_facts": case["target_facts"],
+                            }
+                    attempts.append(attempt)
+                    if successful:
+                        break
+                if successful:
+                    break
+            if successful:
+                break
+        if successful is None:
+            raise RuntimeError(
+                f"no successful held-out causal intervention in {len(attempts)} attempts"
+            )
+
+        best_dictionary = max(
+            reconstruction,
+            key=lambda item: item["held_out_explained_variance"],
+        )
+        destination = ACTIVATION_DIR / artifact_root / "feature_dictionary.pt"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        layer = best_dictionary["layer"]
+        torch.save(
+            {
+                "facts": FACTS,
+                "layer": layer,
+                "directions": {
+                    fact: tensor.to(torch.bfloat16)
+                    for fact, tensor in directions[layer].items()
+                },
+                "pca_dictionary": dictionaries[layer].to(torch.bfloat16),
+            },
+            destination,
+        )
+        activation_volume.commit()
+        return {
+            "ranked_candidates": candidates,
+            "dictionary": {
+                "source": "task_specific_topk_linear_autoencoder",
+                "rank": DICTIONARY_RANK,
+                "active_features": DICTIONARY_ACTIVE_FEATURES,
+                "encoder": "PCA projection followed by top-k activation",
+                "decoder": "tied PCA dictionary",
+                "external_dictionary_used": False,
+                "external_dictionary_reason": (
+                    "no feature dictionary pinned to the exact Med42 revision "
+                    "was available for a parity measurement"
+                ),
+                "reconstruction_gate": "held_out_explained_variance >= 0.5",
+                "reconstruction": reconstruction,
+                "artifact": {
+                    "volume": "clinical-translator-activations",
+                    "path": str(destination.relative_to(ACTIVATION_DIR)),
+                    "format": "torch.save",
+                    "dtype": "torch.bfloat16",
+                    "bytes": destination.stat().st_size,
+                    "layer": layer,
+                },
+            },
+            "causal_intervention": successful,
+            "intervention_attempts": attempts,
+        }
+
 
 def _smoke(contract: dict[str, Any], output: Path) -> None:
     from clinical_translator.data.generator import generate, write_jsonl
@@ -480,15 +822,93 @@ def _evaluate(contract: dict[str, Any], output: Path) -> None:
     print(f"{len(predictions)} outcomes and {len(failures)} failures written to {output}")
 
 
+def _discover_features(
+    contract: dict[str, Any],
+    predictions_path: Path,
+    output: Path,
+) -> None:
+    import json
+
+    from clinical_translator.contracts.validation import reference
+    from clinical_translator.data.generator import generate
+    from clinical_translator.interpretability.capture import CAPTURE_LAYERS
+    from clinical_translator.interpretability.features import (
+        HELD_OUT_TEMPLATES,
+        TRAIN_TEMPLATES,
+        feature_records,
+        held_out_interventions,
+        validate_report,
+    )
+    from clinical_translator.models.protocol import prompt
+
+    generated, pairs = generate(contract)
+    records = feature_records(generated)
+    predictions = [
+        json.loads(line) for line in predictions_path.read_text().splitlines()
+    ]
+    cases = held_out_interventions(pairs, predictions)
+    model = contract["models"]["primary"]
+    contract_ref = reference(contract)
+    runner = Translator(repo_id=model["repo_id"], revision=model["revision"])
+    discovered = runner.discover_features.remote(
+        [prompt(record["prompt"]) for record in records],
+        [
+            {
+                "id": record["id"],
+                "template_id": record["provenance"]["template_id"],
+                "facts": record["facts"],
+            }
+            for record in records
+        ],
+        cases,
+        contract["reproducibility"]["generation"],
+        contract["reproducibility"]["seeds"],
+        f"{contract['contract_id']}/{contract_ref.rsplit(':', 1)[-1]}/features",
+    )
+    report = {
+        "schema_version": 1,
+        "contract_ref": contract_ref,
+        "model": {"role": "primary", **model},
+        "capture": {
+            "backend": "native_pytorch_forward_hooks",
+            "layers": list(CAPTURE_LAYERS),
+            "token_policy": "last_prompt_token",
+            "dtype": "torch.bfloat16",
+        },
+        "split": {
+            "policy": "paraphrase_template",
+            "train_templates": list(TRAIN_TEMPLATES),
+            "held_out_templates": list(HELD_OUT_TEMPLATES),
+            "train_prompts": 192,
+            "held_out_prompts": 64,
+        },
+        **discovered,
+        "claim_boundary": (
+            "Probe decodability and one intervention nominate candidates; "
+            "they are not circuit-level causal explanations."
+        ),
+    }
+    validate_report(report)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(f"{len(report['ranked_candidates'])} candidates written to {output}")
+
+
 @app.local_entrypoint()
 def main(
     contract_path: str = "configs/contracts/curb65-llama-v2.json",
     download: bool = False,
     smoke: bool = False,
     capture: bool = False,
+    discover_features: bool = False,
     evaluate_all: bool = False,
     output: str = "evidence/goal-04-smoke.jsonl",
     capture_output: str = "evidence/goal-06/manifest.json",
+    feature_output: str = "evidence/goal-07/report.json",
+    predictions: str = "evidence/goal-05/predictions.jsonl",
 ) -> None:
     from clinical_translator.contracts.validation import load
 
@@ -498,6 +918,9 @@ def main(
         return
     if capture:
         _capture(contract, Path(capture_output))
+        return
+    if discover_features:
+        _discover_features(contract, Path(predictions), Path(feature_output))
         return
     if evaluate_all:
         destination = (
