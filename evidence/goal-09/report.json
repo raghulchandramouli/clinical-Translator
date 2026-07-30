@@ -1,0 +1,822 @@
+{
+  "claim_boundary": "Results apply only to the tested held-out synthetic pairs and teacher-forced structured Boolean decision tokens.",
+  "contract_ref": "curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de",
+  "counterexamples": [
+    {
+      "criterion": "confusion",
+      "effect_size": -0.625,
+      "experiment": "feature_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "confusion",
+      "effect_size": -0.25390625,
+      "experiment": "mlp_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "confusion",
+      "effect_size": -0.021484375,
+      "experiment": "path_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "confusion",
+      "experiment": "variable_validation",
+      "feature_effect_size": 0.59765625,
+      "result": "mixed",
+      "unrelated_output_stability": 0.90625
+    },
+    {
+      "criterion": "elevated_urea",
+      "effect_size": -0.521484375,
+      "experiment": "feature_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "elevated_urea",
+      "experiment": "variable_validation",
+      "feature_effect_size": 0.611328125,
+      "result": "mixed",
+      "unrelated_output_stability": 0.8359375
+    },
+    {
+      "criterion": "high_respiratory_rate",
+      "effect_size": -0.732421875,
+      "experiment": "feature_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "high_respiratory_rate",
+      "experiment": "variable_validation",
+      "feature_effect_size": 0.9609375,
+      "result": "mixed",
+      "unrelated_output_stability": 0.890625
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "effect_size": -0.783203125,
+      "experiment": "feature_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "effect_size": -0.8046875,
+      "experiment": "mlp_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "effect_size": -0.5234375,
+      "experiment": "path_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "low_blood_pressure",
+      "experiment": "variable_validation",
+      "feature_effect_size": 0.078125,
+      "result": "mixed",
+      "unrelated_output_stability": 0.921875
+    },
+    {
+      "criterion": "age_at_least_65",
+      "effect_size": -1.25390625,
+      "experiment": "feature_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "age_at_least_65",
+      "effect_size": -0.314453125,
+      "experiment": "mlp_ablation",
+      "result": "no_predicted_degradation"
+    },
+    {
+      "criterion": "age_at_least_65",
+      "experiment": "variable_validation",
+      "feature_effect_size": 0.537109375,
+      "result": "mixed",
+      "unrelated_output_stability": 0.9453125
+    }
+  ],
+  "model": {
+    "repo_id": "m42-health/Llama3-Med42-8B",
+    "revision": "ceab7e7ee4b9dbde7ba82867f34274db51487d83",
+    "role": "medical instruction-tuned translator"
+  },
+  "schema_version": 1,
+  "scope": {
+    "decision": "teacher-forced Boolean fact-token choice",
+    "feature_layer": 31,
+    "matched_pairs": 160,
+    "pairs_per_variable": 32,
+    "prompts": 64,
+    "templates": [
+      "t07",
+      "t08"
+    ],
+    "unrelated_stability_gate": 0.9
+  },
+  "sources": {
+    "circuits": "Goal 08 retained Med42 fact-token circuits",
+    "features": "Goal 07 rank-128 top-k linear autoencoder dictionary",
+    "matched_pairs": "Goal 02 deterministic counterfactual pairs"
+  },
+  "variables": {
+    "age_at_least_65": {
+      "ablations": {
+        "attention_heads": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.43359375,
+          "pass": true,
+          "prompts": 32
+        },
+        "feature": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": -1.25390625,
+          "pass": false,
+          "prompts": 32
+        },
+        "mlp": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": -0.314453125,
+          "pass": false,
+          "prompts": 32
+        },
+        "path": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.126953125,
+          "pass": true,
+          "prompts": 32
+        }
+      },
+      "controls": {
+        "negative_sham": {
+          "effect_size": 0.0,
+          "pass": true,
+          "stability": 1.0
+        },
+        "negative_unrelated_feature": {
+          "effect_size": 0.056640625,
+          "feature": "confusion",
+          "pass": true,
+          "stability": 0.96875
+        },
+        "positive_counterfactual": {
+          "accuracy": 1.0,
+          "effect_size": 7.9765625,
+          "pass": true,
+          "source_true_rate": 0.625
+        }
+      },
+      "interchange": {
+        "accuracy": 1.0,
+        "effect_size": 7.9765625,
+        "eligible_flips": 12,
+        "eligible_pairs": 12,
+        "failed_pair_ids": [],
+        "feature_effect_size": 0.537109375,
+        "feature_eligible_flips": 7,
+        "feature_failed_pair_ids": [
+          "pair-t07-01010-age_at_least_65",
+          "pair-t07-11000-age_at_least_65",
+          "pair-t07-11010-age_at_least_65",
+          "pair-t07-11110-age_at_least_65",
+          "pair-t08-11010-age_at_least_65"
+        ],
+        "matched_pairs": 32,
+        "method": "replace the source layer-31 residual with its matched counterfactual target residual at the fact-token decision",
+        "predicted_direction_rate": 1.0,
+        "unrelated_changed": [
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-11000-age_at_least_65"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-10000-age_at_least_65"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-10010-age_at_least_65"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-11000-age_at_least_65"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-11010-age_at_least_65"
+          },
+          {
+            "output": "high_respiratory_rate",
+            "pair_id": "pair-t07-11010-age_at_least_65"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-01010-age_at_least_65"
+          }
+        ],
+        "unrelated_output_stability": 0.9453125,
+        "unrelated_outputs_checked": 128
+      },
+      "status": "mixed"
+    },
+    "confusion": {
+      "ablations": {
+        "attention_heads": {
+          "accuracy": 0.59375,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.19921875,
+          "pass": true,
+          "prompts": 32
+        },
+        "feature": {
+          "accuracy": 0.6875,
+          "accuracy_drop": -0.09375,
+          "effect_size": -0.625,
+          "pass": false,
+          "prompts": 32
+        },
+        "mlp": {
+          "accuracy": 0.6875,
+          "accuracy_drop": -0.09375,
+          "effect_size": -0.25390625,
+          "pass": false,
+          "prompts": 32
+        },
+        "path": {
+          "accuracy": 0.6875,
+          "accuracy_drop": -0.09375,
+          "effect_size": -0.021484375,
+          "pass": false,
+          "prompts": 32
+        }
+      },
+      "controls": {
+        "negative_sham": {
+          "effect_size": 0.0,
+          "pass": true,
+          "stability": 1.0
+        },
+        "negative_unrelated_feature": {
+          "effect_size": 0.904296875,
+          "feature": "elevated_urea",
+          "pass": true,
+          "stability": 1.0
+        },
+        "positive_counterfactual": {
+          "accuracy": 0.59375,
+          "effect_size": 11.689453125,
+          "pass": true,
+          "source_true_rate": 0.0
+        }
+      },
+      "interchange": {
+        "accuracy": 0.59375,
+        "effect_size": 11.689453125,
+        "eligible_flips": 19,
+        "eligible_pairs": 19,
+        "failed_pair_ids": [],
+        "feature_effect_size": 0.59765625,
+        "feature_eligible_flips": 0,
+        "feature_failed_pair_ids": [
+          "pair-t07-01001-confusion",
+          "pair-t07-01010-confusion",
+          "pair-t07-01011-confusion",
+          "pair-t07-01100-confusion",
+          "pair-t07-01101-confusion",
+          "pair-t07-01110-confusion",
+          "pair-t07-01111-confusion",
+          "pair-t08-00001-confusion",
+          "pair-t08-00011-confusion",
+          "pair-t08-00100-confusion",
+          "pair-t08-00101-confusion",
+          "pair-t08-00110-confusion",
+          "pair-t08-00111-confusion",
+          "pair-t08-01001-confusion",
+          "pair-t08-01011-confusion",
+          "pair-t08-01100-confusion",
+          "pair-t08-01101-confusion",
+          "pair-t08-01110-confusion",
+          "pair-t08-01111-confusion"
+        ],
+        "matched_pairs": 32,
+        "method": "replace the source layer-31 residual with its matched counterfactual target residual at the fact-token decision",
+        "predicted_direction_rate": 1.0,
+        "unrelated_changed": [
+          {
+            "output": "high_respiratory_rate",
+            "pair_id": "pair-t07-01011-confusion"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-01100-confusion"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-01101-confusion"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-01010-confusion"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-01100-confusion"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-01101-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-00010-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-01000-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-00010-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-01000-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-01010-confusion"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-01110-confusion"
+          }
+        ],
+        "unrelated_output_stability": 0.90625,
+        "unrelated_outputs_checked": 128
+      },
+      "status": "mixed"
+    },
+    "elevated_urea": {
+      "ablations": {
+        "attention_heads": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 2.9111328125,
+          "pass": true,
+          "prompts": 32
+        },
+        "feature": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": -0.521484375,
+          "pass": false,
+          "prompts": 32
+        },
+        "mlp": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.349609375,
+          "pass": true,
+          "prompts": 32
+        },
+        "path": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.1875,
+          "pass": true,
+          "prompts": 32
+        }
+      },
+      "controls": {
+        "negative_sham": {
+          "effect_size": 0.0,
+          "pass": true,
+          "stability": 1.0
+        },
+        "negative_unrelated_feature": {
+          "effect_size": 1.1484375,
+          "feature": "high_respiratory_rate",
+          "pass": true,
+          "stability": 1.0
+        },
+        "positive_counterfactual": {
+          "accuracy": 1.0,
+          "effect_size": 10.92578125,
+          "pass": true,
+          "source_true_rate": 0.5
+        }
+      },
+      "interchange": {
+        "accuracy": 1.0,
+        "effect_size": 10.92578125,
+        "eligible_flips": 16,
+        "eligible_pairs": 16,
+        "failed_pair_ids": [],
+        "feature_effect_size": 0.611328125,
+        "feature_eligible_flips": 0,
+        "feature_failed_pair_ids": [
+          "pair-t07-00000-elevated_urea",
+          "pair-t07-00001-elevated_urea",
+          "pair-t07-00010-elevated_urea",
+          "pair-t07-00011-elevated_urea",
+          "pair-t07-00100-elevated_urea",
+          "pair-t07-00101-elevated_urea",
+          "pair-t07-00110-elevated_urea",
+          "pair-t07-00111-elevated_urea",
+          "pair-t07-10000-elevated_urea",
+          "pair-t07-10001-elevated_urea",
+          "pair-t07-10010-elevated_urea",
+          "pair-t07-10011-elevated_urea",
+          "pair-t07-10100-elevated_urea",
+          "pair-t07-10101-elevated_urea",
+          "pair-t07-10110-elevated_urea",
+          "pair-t07-10111-elevated_urea"
+        ],
+        "matched_pairs": 32,
+        "method": "replace the source layer-31 residual with its matched counterfactual target residual at the fact-token decision",
+        "predicted_direction_rate": 1.0,
+        "unrelated_changed": [
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10001-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10010-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10011-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10100-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10101-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10110-elevated_urea"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-10111-elevated_urea"
+          },
+          {
+            "output": "high_respiratory_rate",
+            "pair_id": "pair-t07-10011-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-00000-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-00001-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-10000-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-10001-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-10100-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-10101-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-00010-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-10100-elevated_urea"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-10101-elevated_urea"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-00010-elevated_urea"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-10000-elevated_urea"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-10000-elevated_urea"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-10110-elevated_urea"
+          }
+        ],
+        "unrelated_output_stability": 0.8359375,
+        "unrelated_outputs_checked": 128
+      },
+      "status": "mixed"
+    },
+    "high_respiratory_rate": {
+      "ablations": {
+        "attention_heads": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.51171875,
+          "pass": true,
+          "prompts": 32
+        },
+        "feature": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": -0.732421875,
+          "pass": false,
+          "prompts": 32
+        },
+        "mlp": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.3125,
+          "pass": true,
+          "prompts": 32
+        },
+        "path": {
+          "accuracy": 1.0,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.806640625,
+          "pass": true,
+          "prompts": 32
+        }
+      },
+      "controls": {
+        "negative_sham": {
+          "effect_size": 0.0,
+          "pass": true,
+          "stability": 1.0
+        },
+        "negative_unrelated_feature": {
+          "effect_size": 0.125,
+          "feature": "low_blood_pressure",
+          "pass": true,
+          "stability": 1.0
+        },
+        "positive_counterfactual": {
+          "accuracy": 1.0,
+          "effect_size": 11.0,
+          "pass": true,
+          "source_true_rate": 0.03125
+        }
+      },
+      "interchange": {
+        "accuracy": 1.0,
+        "effect_size": 11.0,
+        "eligible_flips": 31,
+        "eligible_pairs": 31,
+        "failed_pair_ids": [],
+        "feature_effect_size": 0.9609375,
+        "feature_eligible_flips": 4,
+        "feature_failed_pair_ids": [
+          "pair-t07-00000-high_respiratory_rate",
+          "pair-t07-00001-high_respiratory_rate",
+          "pair-t07-00010-high_respiratory_rate",
+          "pair-t07-00011-high_respiratory_rate",
+          "pair-t07-01000-high_respiratory_rate",
+          "pair-t07-01001-high_respiratory_rate",
+          "pair-t07-01010-high_respiratory_rate",
+          "pair-t07-01011-high_respiratory_rate",
+          "pair-t07-10000-high_respiratory_rate",
+          "pair-t07-10001-high_respiratory_rate",
+          "pair-t07-10010-high_respiratory_rate",
+          "pair-t07-10011-high_respiratory_rate",
+          "pair-t07-11000-high_respiratory_rate",
+          "pair-t07-11001-high_respiratory_rate",
+          "pair-t08-00000-high_respiratory_rate",
+          "pair-t08-00001-high_respiratory_rate",
+          "pair-t08-00010-high_respiratory_rate",
+          "pair-t08-00011-high_respiratory_rate",
+          "pair-t08-01000-high_respiratory_rate",
+          "pair-t08-01010-high_respiratory_rate",
+          "pair-t08-01011-high_respiratory_rate",
+          "pair-t08-10000-high_respiratory_rate",
+          "pair-t08-10001-high_respiratory_rate",
+          "pair-t08-10010-high_respiratory_rate",
+          "pair-t08-10011-high_respiratory_rate",
+          "pair-t08-11000-high_respiratory_rate",
+          "pair-t08-11010-high_respiratory_rate"
+        ],
+        "matched_pairs": 32,
+        "method": "replace the source layer-31 residual with its matched counterfactual target residual at the fact-token decision",
+        "predicted_direction_rate": 1.0,
+        "unrelated_changed": [
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-11000-high_respiratory_rate"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-10000-high_respiratory_rate"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-10010-high_respiratory_rate"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-11000-high_respiratory_rate"
+          },
+          {
+            "output": "confusion",
+            "pair_id": "pair-t08-11010-high_respiratory_rate"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-01000-high_respiratory_rate"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t07-01001-high_respiratory_rate"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-01010-high_respiratory_rate"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-11000-high_respiratory_rate"
+          },
+          {
+            "output": "low_blood_pressure",
+            "pair_id": "pair-t08-11001-high_respiratory_rate"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-00010-high_respiratory_rate"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-11000-high_respiratory_rate"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-10010-high_respiratory_rate"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-11000-high_respiratory_rate"
+          }
+        ],
+        "unrelated_output_stability": 0.890625,
+        "unrelated_outputs_checked": 128
+      },
+      "status": "mixed"
+    },
+    "low_blood_pressure": {
+      "ablations": {
+        "attention_heads": {
+          "accuracy": 0.96875,
+          "accuracy_drop": 0.0,
+          "effect_size": 0.24609375,
+          "pass": true,
+          "prompts": 32
+        },
+        "feature": {
+          "accuracy": 1.0,
+          "accuracy_drop": -0.03125,
+          "effect_size": -0.783203125,
+          "pass": false,
+          "prompts": 32
+        },
+        "mlp": {
+          "accuracy": 1.0,
+          "accuracy_drop": -0.03125,
+          "effect_size": -0.8046875,
+          "pass": false,
+          "prompts": 32
+        },
+        "path": {
+          "accuracy": 0.96875,
+          "accuracy_drop": 0.0,
+          "effect_size": -0.5234375,
+          "pass": false,
+          "prompts": 32
+        }
+      },
+      "controls": {
+        "negative_sham": {
+          "effect_size": 0.0,
+          "pass": true,
+          "stability": 1.0
+        },
+        "negative_unrelated_feature": {
+          "effect_size": 0.18359375,
+          "feature": "age_at_least_65",
+          "pass": true,
+          "stability": 1.0
+        },
+        "positive_counterfactual": {
+          "accuracy": 0.96875,
+          "effect_size": 5.287109375,
+          "pass": true,
+          "source_true_rate": 0.25
+        }
+      },
+      "interchange": {
+        "accuracy": 0.96875,
+        "effect_size": 5.287109375,
+        "eligible_flips": 23,
+        "eligible_pairs": 23,
+        "failed_pair_ids": [],
+        "feature_effect_size": 0.078125,
+        "feature_eligible_flips": 0,
+        "feature_failed_pair_ids": [
+          "pair-t07-00000-low_blood_pressure",
+          "pair-t07-00001-low_blood_pressure",
+          "pair-t07-00100-low_blood_pressure",
+          "pair-t07-00101-low_blood_pressure",
+          "pair-t07-01100-low_blood_pressure",
+          "pair-t07-01101-low_blood_pressure",
+          "pair-t07-10000-low_blood_pressure",
+          "pair-t07-10001-low_blood_pressure",
+          "pair-t07-10100-low_blood_pressure",
+          "pair-t07-10101-low_blood_pressure",
+          "pair-t08-00000-low_blood_pressure",
+          "pair-t08-00001-low_blood_pressure",
+          "pair-t08-00100-low_blood_pressure",
+          "pair-t08-00101-low_blood_pressure",
+          "pair-t08-01001-low_blood_pressure",
+          "pair-t08-01100-low_blood_pressure",
+          "pair-t08-01101-low_blood_pressure",
+          "pair-t08-10000-low_blood_pressure",
+          "pair-t08-10001-low_blood_pressure",
+          "pair-t08-10100-low_blood_pressure",
+          "pair-t08-10101-low_blood_pressure",
+          "pair-t08-11000-low_blood_pressure",
+          "pair-t08-11001-low_blood_pressure"
+        ],
+        "matched_pairs": 32,
+        "method": "replace the source layer-31 residual with its matched counterfactual target residual at the fact-token decision",
+        "predicted_direction_rate": 1.0,
+        "unrelated_changed": [
+          {
+            "output": "confusion",
+            "pair_id": "pair-t07-11000-low_blood_pressure"
+          },
+          {
+            "output": "high_respiratory_rate",
+            "pair_id": "pair-t07-11001-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-00100-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-01000-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-01100-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-10000-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-10100-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t07-11100-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-10000-low_blood_pressure"
+          },
+          {
+            "output": "age_at_least_65",
+            "pair_id": "pair-t08-11100-low_blood_pressure"
+          }
+        ],
+        "unrelated_output_stability": 0.921875,
+        "unrelated_outputs_checked": 128
+      },
+      "status": "mixed"
+    }
+  }
+}
