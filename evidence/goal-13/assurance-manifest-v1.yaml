@@ -78,10 +78,10 @@
       "sha256": "225938011a4e67daecd37b943a7e9b80f3e448946c1d1113c31c514f68fd25d2"
     },
     {
-      "bytes": 105965,
+      "bytes": 7527,
       "path": "evidence/goal-13/benchmark.json",
       "schema_version": 1,
-      "sha256": "c767eee50908830f79d7a0b346ee205e7bfcf7a584be565cfc4df52aebf31b95"
+      "sha256": "de7de827bb27525a992a10cf7ccbfb2d879d98446fa438f2899508a5a9d405aa"
     },
     {
       "bytes": 2883,
@@ -89,9 +89,9 @@
       "sha256": "3528e64ad676ebf22055b4367a114ab23b8883969b60409c73f0a4977862f783"
     },
     {
-      "bytes": 2180,
+      "bytes": 2177,
       "path": "notebooks/assurance-audit.ipynb",
-      "sha256": "ffbb805a2ff26efbb3c84044716e9cf5d90bc972847032da7a7dc3a22b787a4c"
+      "sha256": "4aca26ca109ec9765658fec133913620a2760d1425107e1ada1ad359d1ced7b7"
     }
   ],
   "assumptions": [
@@ -223,7 +223,7 @@
     "lean_toolchain": "leanprover/lean4:v4.32.1",
     "package": "clinical-translator",
     "source_files": 28,
-    "source_tree_sha256": "55a30d29b132be28eacb425922155ff7785c35d0a86af0723db68ec069dc7fed",
+    "source_tree_sha256": "85e02d05a8d919dac56ecc690540333fd91e539a0695c5f5473b20a5ba10470e",
     "uv_lock_sha256": "5b24acd3057e4771a7332f0efd03d73f04beadbc2b26d08ba2203a4b6d070ca4",
     "version": "0.1.0"
   },

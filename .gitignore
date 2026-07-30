@@ -12,7 +12,9 @@ wheels/
 .venv
 
 # Generated research artifacts and model weights
-artifacts/
+artifacts/*
+!artifacts/pngs/
+!artifacts/pngs/*.png
 checkpoints/
 *.pt
 *.pth
