@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -76,7 +75,6 @@ def _claims(
     goal07: dict[str, Any],
     goal08: dict[str, Any],
     goal09: dict[str, Any],
-    goal10: dict[str, Any],
     goal11: dict[str, Any],
     goal12: dict[str, Any],
 ) -> list[dict[str, Any]]:
@@ -155,9 +153,7 @@ def _claims(
             "statement": "the five neural variables form a complete symbolic alignment",
             "domain": "Goal 09 tested synthetic interventions only",
             "evidence": "evidence/goal-10/report.json#/neural_alignment",
-            "reason": (
-                "all five variable alignments are mixed; aligned_score is null"
-            ),
+            "reason": "all five variable alignments are mixed; aligned_score is null",
         },
         {
             "id": "incomplete_scorer_equivalence",
@@ -165,9 +161,7 @@ def _claims(
             "statement": "a scorer omitting confusion equals the complete scorer",
             "domain": "all 32 five-Boolean CURB-65 assignments",
             "evidence": "evidence/goal-11/certificate.json#/results/3",
-            "witness": proof_results["incomplete_scorer_equivalence"][
-                "counterexample"
-            ],
+            "witness": proof_results["incomplete_scorer_equivalence"]["counterexample"],
         },
         {
             "id": "local_neural_slice_certification",
@@ -200,9 +194,7 @@ def _benchmark(
     best_features = {}
     for fact in FACTS:
         candidate = next(
-            item
-            for item in goal07["ranked_candidates"]
-            if item["criterion"] == fact
+            item for item in goal07["ranked_candidates"] if item["criterion"] == fact
         )
         best_features[fact] = {
             "layer": candidate["layer"],
@@ -211,7 +203,15 @@ def _benchmark(
     return {
         "schema_version": 1,
         "contract_ref": contract_ref,
-        "behavioural_evaluation": goal05,
+        "behavioural_summary": {
+            "source": "evidence/goal-05/metrics.json",
+            "scope": goal05["scope"],
+            "models": {
+                role: {key: value for key, value in result.items() if key != "records"}
+                for role, result in goal05["models"].items()
+            },
+            "counterfactuals": goal05["counterfactuals"],
+        },
         "feature_summary": {
             "split": goal07["split"],
             "best_candidate_per_fact": best_features,
@@ -242,12 +242,12 @@ def _benchmark(
                 "eligible_pairs": goal09["variables"][fact]["interchange"][
                     "eligible_pairs"
                 ],
-                "predicted_direction_rate": goal09["variables"][fact][
-                    "interchange"
-                ]["predicted_direction_rate"],
-                "unrelated_output_stability": goal09["variables"][fact][
-                    "interchange"
-                ]["unrelated_output_stability"],
+                "predicted_direction_rate": goal09["variables"][fact]["interchange"][
+                    "predicted_direction_rate"
+                ],
+                "unrelated_output_stability": goal09["variables"][fact]["interchange"][
+                    "unrelated_output_stability"
+                ],
             }
             for fact in FACTS
         },
@@ -364,7 +364,7 @@ def _notebook() -> dict[str, Any]:
             ),
             code(
                 "benchmark = json.loads((root / 'evidence/goal-13/benchmark.json').read_text())\n"
-                "{role: result['exact_record']['accuracy'] for role, result in benchmark['behavioural_evaluation']['models'].items()}"
+                "{role: result['exact_record']['accuracy'] for role, result in benchmark['behavioural_summary']['models'].items()}"
             ),
         ],
         "metadata": {
@@ -387,10 +387,9 @@ def build_package(root: Path) -> tuple[dict[str, Any], dict[str, bytes]]:
     goal07 = _load(root, "evidence/goal-07/report.json")
     goal08 = _load(root, "evidence/goal-08/report.json")
     goal09 = _load(root, "evidence/goal-09/report.json")
-    goal10 = _load(root, "evidence/goal-10/report.json")
     goal11 = _load(root, "evidence/goal-11/certificate.json")
     goal12 = _load(root, "evidence/goal-12/report.json")
-    claims = _claims(goal05, goal07, goal08, goal09, goal10, goal11, goal12)
+    claims = _claims(goal05, goal07, goal08, goal09, goal11, goal12)
     benchmark = _benchmark(contract_ref, goal05, goal07, goal08, goal09, goal12)
     report = _technical_report(
         contract,
@@ -546,7 +545,7 @@ def validate_manifest(
         raise ValueError("manifest input domain is incomplete")
 
     claims = manifest.get("claims", [])
-    if not claims or any(claim.get("status") not in CLAIM_STATUSES for claim in claims):
+    if {claim.get("status") for claim in claims} != CLAIM_STATUSES:
         raise ValueError("manifest claim has an invalid status")
     if any(
         claim["status"] == "proved"
@@ -559,16 +558,14 @@ def validate_manifest(
         for claim in claims
     ):
         raise ValueError("empirical evidence was labelled as proof")
-    if not {"counterexample", "unknown"} <= {claim["status"] for claim in claims}:
-        raise ValueError("manifest omits failures or unknowns")
-
-    unsupported = set(
-        manifest.get("limitations", {}).get("unsupported_claims", [])
-    )
-    if not {
-        "unrestricted natural-language equivalence",
-        "diagnosis or treatment safety",
-    } <= unsupported:
+    unsupported = set(manifest.get("limitations", {}).get("unsupported_claims", []))
+    if (
+        not {
+            "unrestricted natural-language equivalence",
+            "diagnosis or treatment safety",
+        }
+        <= unsupported
+    ):
         raise ValueError("mandatory unsupported claims are missing")
     if not manifest.get("unknowns") or not manifest.get("counterexamples"):
         raise ValueError("manifest omits unresolved or failing results")
@@ -593,8 +590,6 @@ def validate_manifest(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build Goal 13 assurance package")
-    parser.parse_args()
     root = Path(__file__).parents[3]
     manifest, generated = build_package(root)
     validate_manifest(manifest, root, generated)
