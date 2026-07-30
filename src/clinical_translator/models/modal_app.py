@@ -621,6 +621,32 @@ class Translator:
 
         return extract(self.model, self.tokenizer, records, feature_layers)
 
+    @modal.method()
+    def validate_causality(
+        self,
+        records: list[dict[str, Any]],
+        pairs: list[dict[str, Any]],
+        circuits: dict[str, Any],
+        feature_artifact: str,
+    ) -> dict[str, Any]:
+        import torch
+
+        from clinical_translator.interpretability.causal import validate
+
+        features = torch.load(
+            ACTIVATION_DIR / feature_artifact,
+            map_location="cpu",
+            weights_only=True,
+        )
+        return validate(
+            self.model,
+            self.tokenizer,
+            records,
+            pairs,
+            circuits,
+            features["directions"],
+        )
+
 
 def _smoke(contract: dict[str, Any], output: Path) -> None:
     from clinical_translator.data.generator import generate, write_jsonl
@@ -1036,6 +1062,68 @@ def _extract_circuits(
     print(f"10 held-out circuits written to {output}")
 
 
+def _validate_causality(
+    contract: dict[str, Any],
+    features_path: Path,
+    circuits_path: Path,
+    output: Path,
+) -> None:
+    import json
+
+    from clinical_translator.contracts.validation import reference
+    from clinical_translator.data.generator import generate
+    from clinical_translator.interpretability.causal import (
+        causal_pairs,
+        causal_records,
+        validate_report,
+    )
+    from clinical_translator.models.protocol import prompt
+
+    generated, generated_pairs = generate(contract)
+    records = causal_records(generated)
+    pairs = causal_pairs(generated_pairs)
+    feature_report = json.loads(features_path.read_text())
+    circuit_report = json.loads(circuits_path.read_text())
+    model = contract["models"]["primary"]
+    runner = Translator(repo_id=model["repo_id"], revision=model["revision"])
+    result = runner.validate_causality.remote(
+        [
+            {
+                "id": record["id"],
+                "prompt": prompt(record["prompt"]),
+                "expected": record["facts"],
+                "template_id": record["provenance"]["template_id"],
+            }
+            for record in records
+        ],
+        pairs,
+        circuit_report["models"]["primary"]["circuits"],
+        feature_report["dictionary"]["artifact"]["path"],
+    )
+    report = {
+        "schema_version": 1,
+        "contract_ref": reference(contract),
+        "model": {"role": "primary", **model},
+        "sources": {
+            "matched_pairs": "Goal 02 deterministic counterfactual pairs",
+            "features": "Goal 07 rank-128 top-k linear autoencoder dictionary",
+            "circuits": "Goal 08 retained Med42 fact-token circuits",
+        },
+        **result,
+        "claim_boundary": (
+            "Results apply only to the tested held-out synthetic pairs and "
+            "teacher-forced structured Boolean decision tokens."
+        ),
+    }
+    validate_report(report)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    print(f"causal evidence for {len(report['variables'])} variables written to {output}")
+
+
 @app.local_entrypoint()
 def main(
     contract_path: str = "configs/contracts/curb65-llama-v2.json",
@@ -1044,11 +1132,13 @@ def main(
     capture: bool = False,
     discover_features: bool = False,
     extract_circuits: bool = False,
+    validate_causality: bool = False,
     evaluate_all: bool = False,
     output: str = "evidence/goal-04-smoke.jsonl",
     capture_output: str = "evidence/goal-06/manifest.json",
     feature_output: str = "evidence/goal-07/report.json",
     circuit_output: str = "evidence/goal-08/report.json",
+    causal_output: str = "evidence/goal-09/report.json",
     predictions: str = "evidence/goal-05/predictions.jsonl",
 ) -> None:
     from clinical_translator.contracts.validation import load
@@ -1069,6 +1159,14 @@ def main(
             Path(predictions),
             Path(feature_output),
             Path(circuit_output),
+        )
+        return
+    if validate_causality:
+        _validate_causality(
+            contract,
+            Path(feature_output),
+            Path(circuit_output),
+            Path(causal_output),
         )
         return
     if evaluate_all:
