@@ -1,0 +1,55 @@
+CERTIFIED TRANSLATION CONTRACTS FOR CLINICAL LANGUAGE MODELS
+Technical assurance report v1
+
+Contract: curb65-llama-v2@sha256:fc214c7d868fd0b1116c1587e2ffd872b87735b81f5c0d50a681b4d6bbe6a6de
+Primary model: m42-health/Llama3-Med42-8B @ ceab7e7ee4b9dbde7ba82867f34274db51487d83
+Control model: NousResearch/Meta-Llama-3-8B-Instruct @ 53346005fb0ef11d3b6a83b12c895cca40156b6c
+
+SCOPE
+Five Boolean CURB-65 facts; 32 logical combinations; eight controlled
+templates; 256 complete prompts; 6 incomplete prompts; no patient data.
+
+RESULTS
+Primary exact-record accuracy: 0.3516
+Control exact-record accuracy: 0.4062
+All eligible Goal 09 matched patches changed their tested fact token in
+the predicted direction, but every variable remains mixed.
+Unrelated-output stability: confusion=0.9062, elevated_urea=0.8359, high_respiratory_rate=0.8906, low_blood_pressure=0.9219, age_at_least_65=0.9453
+
+CLAIMS
+[PROVED] symbolic_scorer_correctness: the five-Boolean scorer equals its formal specification
+[PROVED] generator_coverage: the deterministic generator covers its declared finite domain
+[PROVED] symbolic_mechanism_equivalence: the Goal 10 five-input mechanism equals the Goal 03 scorer
+[EMPIRICAL] behavioural_translation: model translation performance on the complete prompt set
+[EMPIRICAL] feature_decodability: candidate directions decode each fact on held-out templates
+[EMPIRICAL] candidate_circuit_sufficiency: retained last-token circuits preserve measured held-out choices
+[EMPIRICAL] causal_intervention_alignment: matched residual interventions control each tested fact token
+[UNKNOWN] neural_symbolic_alignment: the five neural variables form a complete symbolic alignment
+[COUNTEREXAMPLE] incomplete_scorer_equivalence: a scorer omitting confusion equals the complete scorer
+[UNKNOWN] local_neural_slice_certification: the extracted neural slice is formally certified
+[COUNTEREXAMPLE] recorded_failure_regressions: current behavioural and causal claims have reproducible failures
+
+CERTIFICATE
+ID: sha256:b15e08b009d6a9a9f3437f1cb2a99948bd8df8eae1d246200ed58f7c9ef24147
+Summary: counterexample=1, proved=3, unknown=1
+
+COUNTEREXAMPLES
+Regression corpus: active=65, fixed=1.
+The omitted-confusion witness fails under incomplete_score and passes
+under the corrected five-fact score.
+
+LIMITATIONS
+- unrestricted natural-language equivalence
+- diagnosis or treatment safety
+- whole-model formal verification
+- clinical deployment readiness
+- coverage of patient data
+- Neural findings apply only to the tested synthetic prompts and interventions.
+- No whole-model, arbitrary-language, safety, or deployment proof is claimed.
+
+REPRODUCE
+uv sync --frozen
+uv run python -m clinical_translator.assurance.proof_engine
+uv run python -m clinical_translator.assurance.counterexamples --demo
+uv run python -m clinical_translator.assurance.manifest
+uv run python -m unittest discover -s tests -v
